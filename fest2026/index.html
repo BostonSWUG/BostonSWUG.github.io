@@ -63,14 +63,15 @@ nav {
   border-bottom: 1px solid var(--line);
 }
 .nav-logo {
-  font-family: var(--ff-display);
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: .06em;
-  color: var(--white);
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
 .nav-links {
   display: flex;
   gap: 32px;
@@ -904,7 +905,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Boston<span>SWUG</span></a>
+  <a href="#" class="nav-logo"><img src="images/swug-icon.png" alt="BostonSWUG" class="nav-logo-img"></a>
   <ul class="nav-links">
     <li><a href="#agenda">Agenda</a></li>
     <li><a href="#sessions">Sessions</a></li>
@@ -948,6 +949,10 @@ footer {
       <line x1="900" y1="0" x2="900" y2="900" stroke="#c1292e" stroke-width="0.4" opacity="0.4"/>
       <circle cx="900" cy="200" r="5" fill="#e8a020" opacity="0.8"/>
     </svg>
+  </div>
+
+  <div class="hero-festival-badge">
+    <img src="images/festival-logo.png" alt="BostonSWUG Festival" class="festival-badge-img">
   </div>
 
   <div class="hero-eyebrow">4th Annual — Free to Attend</div>
@@ -1290,7 +1295,7 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Boston<span>SWUG</span> Summer Festival 2026</div>
+  <div class="footer-brand"><img src="images/swug-icon.png" alt="BostonSWUG" style="height:32px;width:auto;display:block;margin-bottom:4px;"><span style="font-size:11px;color:var(--white3);font-family:var(--ff-body);font-weight:500;">Summer Festival 2026</span></div>
   <div class="footer-copy">4th Annual · June 26 · Waltham, MA · Free to attend</div>
   <div class="footer-links">
     <a href="https://sites.google.com/view/bostonswugfest/home">Previous Festivals</a>
