@@ -338,18 +338,17 @@ section { padding: 100px 40px; }
 }
 .about-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+  margin-top: 56px;
+  border-radius: var(--r);
+  overflow: hidden;
 }
 .stat-box {
   background: var(--ink3);
   padding: 32px 28px;
   border: 1px solid var(--line);
 }
-.stat-box:first-child { border-radius: var(--r) 0 0 0; }
-.stat-box:nth-child(2) { border-radius: 0 var(--r) 0 0; }
-.stat-box:nth-child(3) { border-radius: 0 0 0 var(--r); }
-.stat-box:last-child { border-radius: 0 0 var(--r) 0; }
 .stat-num {
   font-family: var(--ff-display);
   font-weight: 800;
@@ -372,6 +371,20 @@ section { padding: 100px 40px; }
 }
 .about-text p:last-child { margin-bottom: 0; }
 .about-text strong { color: var(--white); font-weight: 600; }
+.about-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+}
+.about-photo-cap {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: .03em;
+  color: var(--white3);
+}
 
 /* ── AGENDA ── */
 .agenda { background: var(--ink); }
@@ -871,7 +884,7 @@ footer {
 
   .about { padding: 60px 20px; }
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  .about-stats { order: -1; }
+  .about-stats { grid-template-columns: 1fr 1fr; margin-top: 40px; }
   .stat-num { font-size: 36px; }
 
   .agenda-item { grid-template-columns: 70px 1fr; }
@@ -986,7 +999,7 @@ footer {
     <div class="hero-meta-sep"></div>
     <div class="hero-meta-item">
       <span class="hero-meta-label">Location</span>
-      <span class="hero-meta-value">Dassault Systèmes HQ, Waltham MA</span>
+      <span class="hero-meta-value">Dassault Systèmes HQ, 185 Wyman St, Waltham, MA</span>
     </div>
   </div>
 
@@ -1007,23 +1020,27 @@ footer {
       <p>The BostonSWUG Festival began in 2023 as a celebration of community and engineering craft. What started as a party has grown into the region's premier free half-day event for SolidWorks engineers, designers, and power users.</p>
       <p>This year's 4th Annual edition brings a sharpened focus on <strong>AI in engineering</strong> — with a dedicated panel, hands-on labs, and practical sessions on the tools reshaping how we design. No cost, no catch. Just a great afternoon with your people.</p>
     </div>
-    <div class="about-stats fade-in">
-      <div class="stat-box">
-        <div class="stat-num">4th</div>
-        <div class="stat-lbl">Annual festival</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">76+</div>
-        <div class="stat-lbl">Attendees last year</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">Free</div>
-        <div class="stat-lbl">Always free, including lunch, training, and raffles</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">6+</div>
-        <div class="stat-lbl">Expert sessions</div>
-      </div>
+    <div class="about-photo fade-in">
+      <img src="images/community-2025.jpg" alt="Attendees networking outdoors at a past BostonSWUG Summer Festival" loading="lazy">
+      <span class="about-photo-cap">A previous BostonSWUG Summer Festival</span>
+    </div>
+  </div>
+  <div class="max about-stats fade-in">
+    <div class="stat-box">
+      <div class="stat-num">4th</div>
+      <div class="stat-lbl">Annual festival</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">76+</div>
+      <div class="stat-lbl">Attendees last year</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">Free</div>
+      <div class="stat-lbl">Always free, including lunch, training, and raffles</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">6+</div>
+      <div class="stat-lbl">Expert sessions</div>
     </div>
   </div>
 </section>
