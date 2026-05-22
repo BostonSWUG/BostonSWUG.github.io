@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BostonSWUG Summer Festival 2026</title>
+<meta name="description" content="4th Annual BostonSWUG Summer Festival — June 26, 2026 at Dassault Systèmes HQ, Waltham MA. Free technical sessions, AI in engineering panel, hands-on labs, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0b0f;
+  --ink2: #13151c;
+  --ink3: #1c1f2a;
+  --gold: #c1292e;
+  --gold2: #d9403a;
+  --gold-dim: rgba(193,41,46,.12);
+  --white: #f5f3ee;
+  --white2: #ccc9c0;
+  --white3: #a8a49e;
+  --line: rgba(245,243,238,.08);
+  --r: 6px;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'Instrument Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+html { background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .5;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(10,11,15,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: .06em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white2);
+  text-decoration: none;
+  letter-spacing: .03em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-rsvp {
+  background: var(--gold);
+  color: var(--ink) !important;
+  padding: 8px 20px;
+  border-radius: var(--r);
+  font-weight: 600 !important;
+  transition: background .2s, transform .15s !important;
+}
+.nav-rsvp:hover { background: var(--gold2) !important; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Engineering grid background */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-grid svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .07;
+}
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(ellipse, rgba(193,41,46,.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(ellipse, rgba(193,41,46,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(56px, 10vw, 140px);
+  line-height: .92;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero-meta-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--white3);
+}
+.hero-meta-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f5f3ee;
+  text-shadow: 0 1px 8px rgba(0,0,0,.6);
+}
+.hero-meta-sep {
+  width: 1px;
+  height: 40px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  letter-spacing: .02em;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,.35);
+  color: #e0ddd6;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: var(--r);
+  border: 1px solid rgba(245,243,238,.25);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-secondary:hover { border-color: rgba(245,243,238,.5); color: var(--white); transform: translateY(-2px); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--white3);
+}
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--white3), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: .4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ── SHARED ── */
+section { padding: 100px 40px; }
+.section-eyebrow {
+  font-family: var(--ff-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--white2);
+  line-height: 1.65;
+  max-width: 560px;
+}
+.section-hdr { margin-bottom: 56px; }
+
+.max { max-width: 1200px; margin: 0 auto; }
+
+/* ── ABOUT STRIP ── */
+.about {
+  background: var(--ink2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 80px 40px;
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.stat-box {
+  background: var(--ink3);
+  padding: 32px 28px;
+  border: 1px solid var(--line);
+}
+.stat-box:first-child { border-radius: var(--r) 0 0 0; }
+.stat-box:nth-child(2) { border-radius: 0 var(--r) 0 0; }
+.stat-box:nth-child(3) { border-radius: 0 0 0 var(--r); }
+.stat-box:last-child { border-radius: 0 0 var(--r) 0; }
+.stat-num {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-lbl {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white2);
+  letter-spacing: .03em;
+}
+.about-text p {
+  color: var(--white2);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: var(--white); font-weight: 600; }
+
+/* ── AGENDA ── */
+.agenda { background: var(--ink); }
+.agenda-track {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.agenda-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0;
+  background: var(--ink2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.agenda-item:hover { border-color: rgba(193,41,46,.25); }
+.agenda-time {
+  padding: 24px 20px;
+  background: var(--ink3);
+  border-right: 1px solid var(--line);
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+}
+.agenda-body {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.agenda-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--white3);
+  margin-bottom: 5px;
+}
+.agenda-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.agenda-desc {
+  font-size: 13px;
+  color: var(--white2);
+  line-height: 1.5;
+}
+.agenda-rooms {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.room-chip {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white2);
+  background: var(--ink3);
+}
+.agenda-item.featured {
+  border-color: rgba(193,41,46,.2);
+  background: rgba(193,41,46,.04);
+}
+.agenda-item.featured .agenda-time {
+  background: rgba(193,41,46,.1);
+}
+.agenda-spacer {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.agenda-spacer::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ── SESSIONS ── */
+.sessions { background: var(--ink2); border-top: 1px solid var(--line); }
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+.session-card {
+  background: var(--ink3);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  transition: border-color .2s, transform .2s;
+  position: relative;
+  overflow: hidden;
+}
+.session-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.session-card:hover { border-color: rgba(193,41,46,.3); transform: translateY(-3px); }
+.session-card:hover::before { transform: scaleX(1); }
+.session-type {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.session-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.session-presenter {
+  font-size: 13px;
+  color: var(--white2);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.session-desc {
+  font-size: 13px;
+  color: var(--white3);
+  line-height: 1.65;
+}
+.session-card.panel { border-left: 2px solid var(--gold); }
+
+/* ── SPEAKERS ── */
+.speakers { background: var(--ink); }
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.speaker-card {
+  background: var(--ink2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px 24px;
+  transition: border-color .2s, transform .2s;
+}
+.speaker-card:hover { border-color: rgba(193,41,46,.25); transform: translateY(-2px); }
+.speaker-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ink3);
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--gold);
+}
+.speaker-name {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.speaker-role {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.speaker-company {
+  font-size: 12px;
+  color: var(--white3);
+  margin-bottom: 14px;
+}
+.speaker-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.speaker-tag {
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white2);
+  background: var(--ink3);
+}
+.speaker-more {
+  border: 1px dashed rgba(193,41,46,.3);
+  background: rgba(193,41,46,.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 200px;
+  gap: 10px;
+}
+.speaker-more-label {
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white3);
+}
+.speaker-more-sub {
+  font-size: 12px;
+  color: var(--white2);
+}
+
+/* ── VENUE ── */
+.venue { background: var(--ink2); border-top: 1px solid var(--line); }
+.venue-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.venue-map {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4/3;
+}
+.venue-map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(1) invert(1) contrast(.85);
+}
+.venue-details { display: flex; flex-direction: column; gap: 28px; }
+.venue-detail-item { display: flex; gap: 16px; align-items: flex-start; }
+.venue-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--gold-dim);
+  border-radius: var(--r);
+  border: 1px solid rgba(193,41,46,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.venue-detail-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white3);
+  margin-bottom: 4px;
+}
+.venue-detail-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.45;
+}
+.venue-detail-sub {
+  font-size: 13px;
+  color: var(--white2);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+/* ── SPONSORS ── */
+.sponsors {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+  padding: 80px 40px;
+}
+.sponsors-inner { text-align: center; }
+.sponsors-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--white3);
+  margin-bottom: 32px;
+}
+.sponsors-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.sponsor-badge {
+  font-family: var(--ff-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white2);
+  opacity: .55;
+  transition: opacity .2s;
+  letter-spacing: .02em;
+}
+.sponsor-badge:hover { opacity: 1; }
+.sponsors-cta {
+  font-size: 14px;
+  color: var(--white3);
+}
+.sponsors-cta a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+.sponsors-cta a:hover { text-decoration: underline; }
+
+/* ── RSVP CTA ── */
+.cta-section {
+  background: linear-gradient(135deg, var(--ink2) 0%, var(--ink3) 100%);
+  border-top: 1px solid var(--line);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(193,41,46,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 20px;
+  position: relative;
+}
+.cta-sub {
+  font-size: 17px;
+  color: var(--white2);
+  margin-bottom: 40px;
+  position: relative;
+}
+.cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand {
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white2);
+}
+.footer-brand span { color: var(--gold); }
+.footer-copy {
+  font-size: 12px;
+  color: var(--white3);
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 12px;
+  color: var(--white3);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--white); }
+
+/* ── FADE IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE NAV ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 57px; left: 0; right: 0;
+  background: rgba(10,11,15,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  z-index: 99;
+  padding: 20px 20px 28px;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 13px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white2);
+  text-decoration: none;
+  border-radius: var(--r);
+  transition: background .15s, color .15s;
+}
+.mobile-menu a:hover { background: var(--ink3); color: var(--white); }
+.mobile-menu .mobile-rsvp {
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 8px;
+  padding: 14px 16px;
+}
+.mobile-menu .mobile-rsvp:hover { background: var(--gold2); color: #fff; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  section { padding: 64px 20px; }
+  .hero { min-height: 100svh; padding: 0 20px 64px; }
+  .hero-title { font-size: clamp(44px, 12vw, 80px); margin-bottom: 24px; }
+  .hero-meta {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+  .hero-meta-sep { display: none; }
+  .hero-meta-value { font-size: 15px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { text-align: center; justify-content: center; width: 100%; padding: 16px 24px; font-size: 15px; }
+  .hero-scroll { display: none; }
+
+  .about { padding: 60px 20px; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-stats { order: -1; }
+  .stat-num { font-size: 36px; }
+
+  .agenda-item { grid-template-columns: 70px 1fr; }
+  .agenda-time { font-size: 12px; padding: 16px 10px; }
+  .agenda-body { padding: 16px 16px; }
+  .agenda-title { font-size: 15px; }
+  .agenda-rooms { display: none; }
+
+  .sessions-grid { grid-template-columns: 1fr; }
+  .speakers-grid { grid-template-columns: 1fr 1fr; }
+  .speaker-more { min-height: 120px; }
+
+  .venue-inner { grid-template-columns: 1fr; gap: 36px; }
+  .venue-map { aspect-ratio: 16/9; }
+
+  .sponsors { padding: 60px 20px; }
+  .sponsors-row { gap: 28px; }
+  .sponsor-badge { font-size: 15px; }
+
+  .cta-section { padding: 72px 20px; }
+  .cta-actions { flex-direction: column; width: 100%; max-width: 360px; margin: 0 auto; }
+  .cta-actions .btn-primary,
+  .cta-actions .btn-secondary { text-align: center; justify-content: center; width: 100%; padding: 16px 24px; font-size: 15px; }
+
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .hero-eyebrow { font-size: 10px; }
+  .speakers-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .stat-box { padding: 20px 16px; }
+  .agenda-item { grid-template-columns: 60px 1fr; }
+  .agenda-time { font-size: 11px; padding: 14px 8px; }
+  .session-card { padding: 24px 20px; }
+  .speaker-card { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Boston<span>SWUG</span></a>
+  <ul class="nav-links">
+    <li><a href="#agenda">Agenda</a></li>
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#rsvp" class="nav-rsvp">RSVP — Free</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#agenda" onclick="closeMenu()">Agenda</a>
+  <a href="#sessions" onclick="closeMenu()">Sessions</a>
+  <a href="#speakers" onclick="closeMenu()">Speakers</a>
+  <a href="#venue" onclick="closeMenu()">Venue</a>
+  <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="mobile-rsvp">RSVP — It's Free →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#f5f3ee" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="smallgrid" width="12" height="12" patternUnits="userSpaceOnUse">
+          <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#f5f3ee" stroke-width="0.2"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#smallgrid)"/>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+      <circle cx="900" cy="200" r="220" fill="none" stroke="#c1292e" stroke-width="0.6" opacity="0.6"/>
+      <circle cx="900" cy="200" r="340" fill="none" stroke="#c1292e" stroke-width="0.4" opacity="0.3"/>
+      <circle cx="900" cy="200" r="480" fill="none" stroke="#c1292e" stroke-width="0.3" opacity="0.2"/>
+      <line x1="0" y1="200" x2="1400" y2="200" stroke="#c1292e" stroke-width="0.4" opacity="0.4"/>
+      <line x1="900" y1="0" x2="900" y2="900" stroke="#c1292e" stroke-width="0.4" opacity="0.4"/>
+      <circle cx="900" cy="200" r="5" fill="#e8a020" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <div class="hero-eyebrow">4th Annual — Free to Attend</div>
+
+  <h1 class="hero-title">
+    BostonSWUG
+    <em>Summer Festival</em>
+  </h1>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Date</span>
+      <span class="hero-meta-value">Friday, June 26, 2026</span>
+    </div>
+    <div class="hero-meta-sep"></div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Time</span>
+      <span class="hero-meta-value">12:00 – 5:00 PM</span>
+    </div>
+    <div class="hero-meta-sep"></div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Location</span>
+      <span class="hero-meta-value">Dassault Systèmes HQ, Waltham MA</span>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#rsvp" class="btn-primary">RSVP — It's Free →</a>
+    <a href="#sessions" class="btn-secondary">View Sessions</a>
+  </div>
+
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max about-inner">
+    <div class="about-text fade-in">
+      <div class="section-eyebrow">About the Festival</div>
+      <h2 class="section-title" style="font-size:clamp(28px,4vw,44px);margin-bottom:24px;">Engineering community meets summer celebration</h2>
+      <p>The BostonSWUG Festival began in 2023 as a celebration of community and engineering craft. What started as a party has grown into the region's premier free half-day event for SolidWorks engineers, designers, and power users.</p>
+      <p>This year's 4th Annual edition brings a sharpened focus on <strong>AI in engineering</strong> — with a dedicated panel, hands-on labs, and practical sessions on the tools reshaping how we design. No cost, no catch. Just a great afternoon with your people.</p>
+    </div>
+    <div class="about-stats fade-in">
+      <div class="stat-box">
+        <div class="stat-num">4th</div>
+        <div class="stat-lbl">Annual festival</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">76+</div>
+        <div class="stat-lbl">Attendees last year</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Free</div>
+        <div class="stat-lbl">Always, always free</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">6+</div>
+        <div class="stat-lbl">Expert sessions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda" id="agenda">
+  <div class="max">
+    <div class="section-hdr fade-in">
+      <div class="section-eyebrow">Schedule</div>
+      <h2 class="section-title">The day at a glance</h2>
+      <p class="section-sub">Two rounds of breakout sessions across four rooms, plus lunch, a panel, hands-on FAB Lab access, and a closing celebration.</p>
+    </div>
+
+    <div class="agenda-track fade-in">
+
+      <div class="agenda-item featured">
+        <div class="agenda-time">12:00<br>PM</div>
+        <div class="agenda-body">
+          <div class="agenda-label">Registration + Welcome</div>
+          <div class="agenda-title">Lunch & Networking</div>
+          <div class="agenda-desc">Arrive, grab food, meet the community. Registration opens at noon.</div>
+        </div>
+      </div>
+
+      <div class="agenda-spacer"></div>
+
+      <div class="agenda-item">
+        <div class="agenda-time">1:30<br>PM</div>
+        <div class="agenda-body">
+          <div class="agenda-label">Opening</div>
+          <div class="agenda-title">Welcome Remarks</div>
+          <div class="agenda-desc">Dan Herzberg — BostonSWUG</div>
+        </div>
+      </div>
+
+      <div class="agenda-spacer"></div>
+
+      <div class="agenda-item featured">
+        <div class="agenda-time">2:00<br>PM</div>
+        <div class="agenda-body">
+          <div class="agenda-label">Breakout Round 1 — 50 min</div>
+          <div class="agenda-title">Sessions across all rooms</div>
+          <div class="agenda-desc">Choose your track — technical talks, demos, and hands-on sessions running simultaneously.</div>
+          <div class="agenda-rooms">
+            <span class="room-chip">Room 130F · 26 cap</span>
+            <span class="room-chip">Room 130G · 10 cap</span>
+            <span class="room-chip">Room 130H · 12 cap</span>
+            <span class="room-chip">FAB Lab</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agenda-item featured">
+        <div class="agenda-time">3:00<br>PM</div>
+        <div class="agenda-body">
+          <div class="agenda-label">Breakout Round 2 — 50 min</div>
+          <div class="agenda-title">Second round of sessions</div>
+          <div class="agenda-desc">A second chance to catch what you missed — different sessions in each room.</div>
+          <div class="agenda-rooms">
+            <span class="room-chip">Room 130F · 26 cap</span>
+            <span class="room-chip">Room 130G · 10 cap</span>
+            <span class="room-chip">Room 130H · 12 cap</span>
+            <span class="room-chip">FAB Lab</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agenda-spacer"></div>
+
+      <div class="agenda-item">
+        <div class="agenda-time">4:00<br>PM</div>
+        <div class="agenda-body">
+          <div class="agenda-label">Closing</div>
+          <div class="agenda-title">Prizes & Closing Remarks</div>
+          <div class="agenda-desc">Raffle prizes, announcements, and wrapping up the summer's best afternoon.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section class="sessions" id="sessions">
+  <div class="max">
+    <div class="section-hdr fade-in">
+      <div class="section-eyebrow">Sessions</div>
+      <h2 class="section-title">What you'll learn</h2>
+      <p class="section-sub">Confirmed sessions below. More being added — check back soon.</p>
+    </div>
+
+    <div class="sessions-grid">
+
+      <div class="session-card panel fade-in">
+        <div class="session-type">Panel Discussion</div>
+        <div class="session-title">AI in Engineering</div>
+        <div class="session-presenter">Dan Herzberg · Joe Lance · Austin Etter + more</div>
+        <div class="session-desc">A candid panel on how AI is changing the engineering workflow — design automation, DFM, connected teams, and where the tools are actually useful vs. overhyped.</div>
+      </div>
+
+      <div class="session-card fade-in">
+        <div class="session-type">Product Demo</div>
+        <div class="session-title">Practical AI for the Modern SolidWorks Designer</div>
+        <div class="session-presenter">Austin Etter — Bananaz.ai</div>
+        <div class="session-desc">Live demos of DFM checks, 3D cost-reduction analysis, intelligent drawing review checklists, async 2D/3D design reviews, and visual comparison for design change validation.</div>
+      </div>
+
+      <div class="session-card fade-in">
+        <div class="session-type">Technical Talk · 50 min</div>
+        <div class="session-title">Consistency by Design</div>
+        <div class="session-presenter">Stephanie Hayna — ICU Medical / SWUG NYC</div>
+        <div class="session-desc">Best practices for regulated environments — repeatable validated design processes, compliance-ready workflows, and techniques for standardization across engineering teams in medtech.</div>
+      </div>
+
+      <div class="session-card fade-in">
+        <div class="session-type">Hands-On Workshop</div>
+        <div class="session-title">FAB Lab Session</div>
+        <div class="session-presenter">Chinloo Lama + Sal Lama — Dassault Systèmes</div>
+        <div class="session-desc">Get your hands on real hardware in the EBC FAB Lab. Details coming soon — expect to build something.</div>
+      </div>
+
+      <div class="session-card fade-in" style="border-style:dashed;background:transparent;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:200px;">
+        <div class="session-type" style="color:var(--white3)">More sessions coming</div>
+        <div class="session-title" style="color:var(--white3);font-size:16px;">More sessions being confirmed</div>
+        <div class="session-desc" style="margin-top:8px;">Check back as we finalize the full lineup.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section class="speakers" id="speakers">
+  <div class="max">
+    <div class="section-hdr fade-in">
+      <div class="section-eyebrow">Speakers</div>
+      <h2 class="section-title">Who you'll hear from</h2>
+      <p class="section-sub">Confirmed speakers so far. More being added as the agenda comes together.</p>
+    </div>
+
+    <div class="speakers-grid">
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">DH</div>
+        <div class="speaker-name">Dan Herzberg</div>
+        <div class="speaker-role">Panel Moderator</div>
+        <div class="speaker-company">BostonSWUG</div>
+        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">JL</div>
+        <div class="speaker-name">Joe Lance</div>
+        <div class="speaker-role">Panelist</div>
+        <div class="speaker-company">AI in Engineering</div>
+        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">AE</div>
+        <div class="speaker-name">Austin Etter</div>
+        <div class="speaker-role">AI Software Consultant</div>
+        <div class="speaker-company">Bananaz.ai</div>
+        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span><span class="speaker-tag">Demo</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">SH</div>
+        <div class="speaker-name">Stephanie Hayna</div>
+        <div class="speaker-role">Design Engineer</div>
+        <div class="speaker-company">ICU Medical / SWUG NYC</div>
+        <div class="speaker-tags"><span class="speaker-tag">Medtech</span><span class="speaker-tag">Best Practices</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">CL</div>
+        <div class="speaker-name">Chinloo Lama</div>
+        <div class="speaker-role">FAB Lab</div>
+        <div class="speaker-company">Dassault Systèmes</div>
+        <div class="speaker-tags"><span class="speaker-tag">Hands-on</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">SL</div>
+        <div class="speaker-name">Sal Lama</div>
+        <div class="speaker-role">FAB Lab</div>
+        <div class="speaker-company">Dassault Systèmes</div>
+        <div class="speaker-tags"><span class="speaker-tag">Hands-on</span></div>
+      </div>
+
+      <div class="speaker-card speaker-more fade-in">
+        <div class="speaker-more-label">More speakers being confirmed</div>
+        <div class="speaker-more-sub">Check back soon</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue" id="venue">
+  <div class="max">
+    <div class="section-hdr fade-in">
+      <div class="section-eyebrow">Venue</div>
+      <h2 class="section-title">Dassault Systèmes Waltham</h2>
+    </div>
+    <div class="venue-inner fade-in">
+      <div class="venue-map">
+        <iframe
+          src="https://maps-api-ssl.google.com/maps?hl=en-US&ll=42.402576,-71.255429&output=embed&q=185+Wyman+St,+Waltham,+MA+02451&z=16"
+          frameborder="0"
+          allowfullscreen
+          loading="lazy"
+          title="Venue map">
+        </iframe>
+      </div>
+      <div class="venue-details">
+        <div class="venue-detail-item">
+          <div class="venue-icon">📍</div>
+          <div>
+            <div class="venue-detail-label">Address</div>
+            <div class="venue-detail-value">185 Wyman St<br>Waltham, MA 02451</div>
+            <div class="venue-detail-sub">Executive Briefing Center (EBC) — follow signs from main entrance</div>
+          </div>
+        </div>
+        <div class="venue-detail-item">
+          <div class="venue-icon">🕛</div>
+          <div>
+            <div class="venue-detail-label">Date & Time</div>
+            <div class="venue-detail-value">Friday, June 26, 2026</div>
+            <div class="venue-detail-sub">12:00 PM – 5:00 PM · Doors open at noon</div>
+          </div>
+        </div>
+        <div class="venue-detail-item">
+          <div class="venue-icon">🏛</div>
+          <div>
+            <div class="venue-detail-label">Spaces</div>
+            <div class="venue-detail-value">EBC + 3 Breakout Rooms + FAB Lab</div>
+            <div class="venue-detail-sub">Room 130F (26 cap) · Room 130G (10 cap) · Room 130H (12 cap) · FAB Lab (hands-on)</div>
+          </div>
+        </div>
+        <div class="venue-detail-item">
+          <div class="venue-icon">🚗</div>
+          <div>
+            <div class="venue-detail-label">Parking</div>
+            <div class="venue-detail-value">Free on-site parking available</div>
+            <div class="venue-detail-sub">Use the main lot off Wyman St</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="sponsors" id="sponsors">
+  <div class="max sponsors-inner">
+    <div class="sponsors-label">Supported by</div>
+    <div class="sponsors-row">
+      <div class="sponsor-badge">John Galt</div>
+      <div class="sponsor-badge">Dassault Systèmes</div>
+    </div>
+    <div class="sponsors-cta">
+      Interested in sponsoring? <a href="mailto:BostonSWUG@gmail.com">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP CTA -->
+<section class="cta-section" id="rsvp">
+  <div class="max">
+    <h2 class="cta-title fade-in">Save your seat.<br>It's free.</h2>
+    <p class="cta-sub fade-in">Register on the SWUGN community portal. No cost, no catch.</p>
+    <div class="cta-actions fade-in">
+      <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="btn-primary">RSVP on SWUGN →</a>
+      <a href="mailto:BostonSWUG@gmail.com" class="btn-secondary">Contact the organizer</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Boston<span>SWUG</span> Summer Festival 2026</div>
+  <div class="footer-copy">4th Annual · June 26 · Waltham, MA · Free to attend</div>
+  <div class="footer-links">
+    <a href="https://sites.google.com/view/bostonswugfest/home">Previous Festivals</a>
+    <a href="mailto:BostonSWUG@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
