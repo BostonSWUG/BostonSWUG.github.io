@@ -383,6 +383,75 @@ section { padding: 100px 40px; }
   border-radius: var(--r);
   border: 1px solid var(--line);
 }
+
+/* ── CAROUSEL ── */
+.carousel {
+  position: relative;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.carousel-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.carousel-slide.active {
+  opacity: 1;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10,11,15,.6);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  z-index: 2;
+}
+.carousel-btn:hover { background: rgba(10,11,15,.85); }
+.carousel-prev { left: 12px; }
+.carousel-next { right: 12px; }
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245,243,238,.35);
+  cursor: pointer;
+  transition: background .2s;
+}
+.carousel-dot.active {
+  background: var(--gold);
+}
 .about-photo-cap {
   display: block;
   margin-top: 12px;
@@ -1232,8 +1301,39 @@ footer {
       <p>This year's 4th Annual edition brings a sharpened focus on <strong>AI in engineering</strong> — with a dedicated panel, hands-on labs, and practical sessions on the tools reshaping how we design. No cost, no catch. Just a great afternoon with your people.</p>
     </div>
     <div class="about-photo fade-in">
-      <img src="images/community-2025.jpg" alt="Attendees networking outdoors at a past BostonSWUG Summer Festival" loading="lazy">
-      <span class="about-photo-cap">A previous BostonSWUG Summer Festival</span>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-slide active">
+            <img src="images/community-2025.jpg" alt="Attendees networking outdoors at a past BostonSWUG Summer Festival" loading="lazy">
+          </div>
+          <div class="carousel-slide">
+            <img src="images/carousel-2.jpg" alt="BostonSWUG Festival session in progress" loading="lazy">
+          </div>
+          <div class="carousel-slide">
+            <img src="images/carousel-3.jpg" alt="Hands-on workshop at a previous festival" loading="lazy">
+          </div>
+          <div class="carousel-slide">
+            <img src="images/carousel-4.jpg" alt="BostonSWUG Festival community" loading="lazy">
+          </div>
+          <div class="carousel-slide">
+            <img src="images/carousel-5.jpg" alt="BostonSWUG Festival presentation" loading="lazy">
+          </div>
+          <div class="carousel-slide">
+            <img src="images/carousel-6.jpg" alt="BostonSWUG Festival networking" loading="lazy">
+          </div>
+        </div>
+        <button class="carousel-btn carousel-prev" aria-label="Previous image">&#10094;</button>
+        <button class="carousel-btn carousel-next" aria-label="Next image">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="carousel-dot active"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+        </div>
+      </div>
+      <span class="about-photo-cap">Photos from previous BostonSWUG Summer Festivals</span>
     </div>
   </div>
   <div class="max about-stats fade-in">
@@ -1901,6 +2001,39 @@ document.querySelectorAll('.speaker-filter-btn').forEach(btn => {
     });
   });
 });
+
+// Carousel
+(function() {
+  const carousel = document.querySelector('.carousel');
+  if (!carousel) return;
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  let current = 0;
+  let timer;
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  function resetAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
+
+  carousel.querySelector('.carousel-prev').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  carousel.querySelector('.carousel-next').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+
+  startAuto();
+})();
 </script>
 
 </body>
