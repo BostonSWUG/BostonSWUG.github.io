@@ -737,6 +737,36 @@ section { padding: 100px 40px; }
   font-weight: 600;
 }
 
+/* ── SESSION FILTER ── */
+.session-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.session-filter-btn {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--white2);
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.session-filter-btn:hover {
+  border-color: rgba(193,41,46,.4);
+  color: var(--white);
+}
+.session-filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ── VENUE ── */
 .venue { background: var(--ink2); border-top: 1px solid var(--line); }
 .venue-inner {
@@ -1059,6 +1089,19 @@ footer {
   margin-top: 14px;
 }
 .session-expand-content .expand-chip {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white2);
+  background: var(--ink3);
+}
+.session-card-top .expand-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.session-card-top .expand-chip {
   font-size: 11px;
   padding: 3px 10px;
   border-radius: 999px;
@@ -1449,20 +1492,8 @@ footer {
 
       <div class="agenda-spacer"></div>
 
-      <div class="agenda-item">
-        <div class="agenda-time">4:00<br>PM</div>
-        <div class="agenda-body">
-          <div class="agenda-label">Social</div>
-          <div class="agenda-title">Cocktail Hour Hosted by Dassault Systèmes</div>
-          <div class="agenda-desc">Drinks, networking, and a chance to catch up before the panel kicks off.</div>
-          <div class="agenda-rooms"><span class="room-chip">EBC Central</span></div>
-        </div>
-      </div>
-
-      <div class="agenda-spacer"></div>
-
       <div class="agenda-item featured">
-        <div class="agenda-time">4:30<br>PM</div>
+        <div class="agenda-time">4:15<br>PM</div>
         <div class="agenda-body">
           <div class="agenda-label">Panel</div>
           <div class="agenda-title">AI in Engineering Panel Discussion</div>
@@ -1474,11 +1505,11 @@ footer {
       <div class="agenda-spacer"></div>
 
       <div class="agenda-item">
-        <div class="agenda-time">5:30<br>PM</div>
+        <div class="agenda-time">5:15<br>PM</div>
         <div class="agenda-body">
-          <div class="agenda-label">Closing</div>
-          <div class="agenda-title">Cocktail Hour Continues with Raffle Prizes & Closing Remarks</div>
-          <div class="agenda-desc">The party keeps going — raffle prizes, announcements, and wrapping up the summer's best afternoon.</div>
+          <div class="agenda-label">Social &amp; Closing</div>
+          <div class="agenda-title">Cocktail Hour, Raffle Prizes & Closing Remarks</div>
+          <div class="agenda-desc">Drinks and networking hosted by Dassault Systèmes, raffle prizes, announcements, and wrapping up the summer's best afternoon.</div>
           <div class="agenda-rooms"><span class="room-chip">EBC Central</span></div>
         </div>
       </div>
@@ -1496,49 +1527,27 @@ footer {
       <p class="section-sub">Confirmed sessions below. More being added — check back soon.</p>
     </div>
 
-    <div class="session-rounds">
+    <div class="session-filter fade-in">
+      <button class="session-filter-btn active" data-filter="all">All</button>
+      <button class="session-filter-btn" data-filter="AI &amp; Automation">AI & Automation</button>
+      <button class="session-filter-btn" data-filter="DFM">DFM</button>
+      <button class="session-filter-btn" data-filter="Live Demo">Live Demo</button>
+      <button class="session-filter-btn" data-filter="Sketching">Sketching</button>
+      <button class="session-filter-btn" data-filter="Best Practices">Best Practices</button>
+      <button class="session-filter-btn" data-filter="Medtech">Medtech</button>
+      <button class="session-filter-btn" data-filter="Data Management">Data Management</button>
+      <button class="session-filter-btn" data-filter="Cloud">Cloud</button>
+      <button class="session-filter-btn" data-filter="PDM">PDM</button>
+      <button class="session-filter-btn" data-filter="Hands-On">Hands-On</button>
+      <button class="session-filter-btn" data-filter="Panel Q&amp;A">Panel Q&A</button>
+    </div>
 
-      <!-- FEATURED PANEL -->
-      <div>
-        <div class="session-round-hdr fade-in">
-          <div class="session-round-label">Featured · All Attendees</div>
-          <div class="session-round-name">Panel Discussion</div>
-        </div>
-        <div class="fade-in">
-          <div class="session-card session-featured panel">
-            <div class="session-card-top">
-              <div class="session-type">Panel Discussion</div>
-              <div class="session-title">AI in Engineering</div>
-              <div class="session-presenter">Dan Herzberg · Joe Lance · Austin Etter · Suchit Jain · Oded Maron</div>
-              <div class="session-desc">A candid panel on how AI is changing the engineering workflow — design automation, DFM, connected teams, and where the tools are actually useful vs. overhyped.</div>
-              <button class="session-expand-btn" onclick="toggleCard(this)">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Details
-              </button>
-            </div>
-            <div class="session-expand-content">
-              <div class="expand-section-label">About the Session</div>
-              <p>A frank, practitioner-focused conversation on where AI is actually moving the needle in engineering. Panelists will cover design automation, DFM co-pilots, AI-assisted drawing review, and the gap between vendor marketing and real-world utility. Expect candid takes, audience Q&A, and no vendor pitches.</p>
-              <div class="expand-meta">
-                <span class="expand-chip">AI &amp; Automation</span>
-                <span class="expand-chip">Panel Q&amp;A</span>
-                <span class="expand-chip">Open to All</span>
-              </div>
-              <div class="expand-section-label">Panelists</div>
-              <p><strong style="color:var(--white)">Dan Herzberg</strong> — BostonSWUG organizer and panel moderator.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Joe Lance</strong> — SolidWorks Champion of the Year and retired Principal Mechanical Technologist with decades of design engineering experience.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Austin Etter</strong> — AI Software Consultant at Bananaz.ai, deploying practical AI tooling into SolidWorks design and review workflows.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Suchit Jain</strong> — VP of Strategy & Business Development at Dassault Systèmes SolidWorks, driving the product vision and ecosystem partnerships.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Oded Maron</strong> — Head of AI at MassRobotics, bringing deep expertise in applied machine learning and robotics innovation.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="session-rounds">
 
       <!-- ROUND 1 -->
       <div>
         <div class="session-round-hdr fade-in">
-          <div class="session-round-label">Breakout Round 1 · 2:00 PM — 50 min</div>
+          <div class="session-round-label">Breakout Round 1 · 2:00 PM — 2:50 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
         <div class="session-round-grid fade-in">
@@ -1550,6 +1559,11 @@ footer {
               <div class="session-title">Practical AI for the Modern SolidWorks Designer</div>
               <div class="session-presenter">Austin Etter</div>
               <div class="session-desc">Live demos of DFM checks, cost-reduction analysis, drawing review checklists, async design reviews, and visual comparison for design change validation.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">AI &amp; Automation</span>
+                <span class="expand-chip">DFM</span>
+                <span class="expand-chip">Live Demo</span>
+              </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Details
@@ -1559,9 +1573,6 @@ footer {
               <div class="expand-section-label">About the Session</div>
               <p>A live demo-heavy session showcasing how Bananaz.ai fits into the SolidWorks workflow today. Austin will walk through: automated DFM checks, 3D cost-reduction analysis, intelligent drawing review checklists, async 2D/3D design reviews, and visual comparison for design change validation. No slides — just running the tools in real time.</p>
               <div class="expand-meta">
-                <span class="expand-chip">AI &amp; Automation</span>
-                <span class="expand-chip">DFM</span>
-                <span class="expand-chip">Live Demo</span>
                 <span class="expand-chip">Room 130F · 26 cap</span>
               </div>
               <div class="expand-section-label">About Austin Etter</div>
@@ -1598,6 +1609,11 @@ footer {
               <div class="session-title">SOLIDWORKS Sketches: Techniques, Tricks & Things You Missed</div>
               <div class="session-presenter">Jay Pinheiro</div>
               <div class="session-desc">A session with something for everybody — from daily users to power modelers. Walk through sketch best practices, recommended system settings, built-in shortcuts you've forgotten about, relationship management tips, and underused sketch tools that deserve a second look.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">All Levels</span>
+                <span class="expand-chip">Sketching</span>
+                <span class="expand-chip">Best Practices</span>
+              </div>
               <button class="session-expand-btn" onclick="this.closest('.session-card').classList.toggle('expanded')">
                 More info <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </button>
@@ -1606,9 +1622,6 @@ footer {
               <div class="expand-section-label">About the Session</div>
               <p>A session with something for everybody — from daily users to power modelers. Jay covers general sketch best practices, recommended system settings, built-in shortcuts you've probably forgotten, tips for managing sketch relationships effectively, and overlooked sketch tools — the "Island of Misfit Toys" features that deserve your attention.</p>
               <div class="expand-meta">
-                <span class="expand-chip">All Levels</span>
-                <span class="expand-chip">Sketching</span>
-                <span class="expand-chip">Best Practices</span>
                 <span class="expand-chip">Room 130H · 12 cap</span>
               </div>
               <div class="expand-section-label">About Jay Pinheiro</div>
@@ -1622,7 +1635,7 @@ footer {
       <!-- ROUND 2 -->
       <div>
         <div class="session-round-hdr fade-in">
-          <div class="session-round-label">Breakout Round 2 · 3:00 PM — 50 min</div>
+          <div class="session-round-label">Breakout Round 2 · 3:00 PM — 3:50 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
         <div class="session-round-grid fade-in">
@@ -1634,6 +1647,11 @@ footer {
               <div class="session-title">Consistency by Design: Best Practices for Regulated Environments</div>
               <div class="session-presenter">Stephanie Hayna</div>
               <div class="session-desc">Best practices for regulated environments — repeatable validated design processes, compliance-ready workflows, and standardization across medtech engineering teams.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">Medtech</span>
+                <span class="expand-chip">Best Practices</span>
+                <span class="expand-chip">Compliance</span>
+              </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Details
@@ -1647,9 +1665,6 @@ footer {
                  <br><br>
                  Drawing from five years of hands-on experience in regulated product design, this session demonstrates tools that can improve standardization, accelerate design reviews, improve communication, and enhance regulatory readiness, giving you methods to be consistent by design.</p>
               <div class="expand-meta">
-                <span class="expand-chip">Medtech</span>
-                <span class="expand-chip">Best Practices</span>
-                <span class="expand-chip">Compliance</span>
                 <span class="expand-chip">Room 130F · 26 cap</span>
               </div>
               <div class="expand-section-label">About Stephanie Hayna</div>
@@ -1667,6 +1682,11 @@ footer {
               <div class="session-title">Managing SOLIDWORKS Data in the Cloud</div>
               <div class="session-presenter">Earl Hasz</div>
               <div class="session-desc">A practical look at how SOLIDWORKS data storage is evolving in cloud environments — covering strategies, tools, and real-world implications for engineering teams.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">Data Management</span>
+                <span class="expand-chip">Cloud</span>
+                <span class="expand-chip">PDM</span>
+              </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Details
@@ -1676,9 +1696,6 @@ footer {
               <div class="expand-section-label">About the Session</div>
               <p>How do you manage SOLIDWORKS data when your team, suppliers, and stakeholders need access from different locations? This presentation explores the cloud-based data management tools included with SOLIDWORKS and demonstrates how teams can securely store, organize, share, review, revise, and release design data. Through a practical workflow demonstration, you'll see how both CAD and non-CAD users can collaborate on projects while maintaining revision control and data integrity. Ideal for SOLIDWORKS users who want to better understand modern cloud-based collaboration and data management.</p>
               <div class="expand-meta">
-                <span class="expand-chip">Data Management</span>
-                <span class="expand-chip">Cloud</span>
-                <span class="expand-chip">PDM</span>
                 <span class="expand-chip">Room 130G · 10 cap</span>
               </div>
               <div class="expand-section-label">About Earl Hasz</div>
@@ -1693,6 +1710,11 @@ footer {
               <div class="session-title">FAB Lab — Build Something</div>
               <div class="session-presenter">Chinloo Lama + Sal Lama</div>
               <div class="session-desc">Get hands-on with real hardware in the FAB Lab. Expect to actually make something — details coming soon.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">Hands-On</span>
+                <span class="expand-chip">Hardware</span>
+                <span class="expand-chip">FAB Lab</span>
+              </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Details
@@ -1701,16 +1723,47 @@ footer {
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
               <p>The Dassault Systèmes FAB Lab is a hands-on space packed with hardware, tools, and big ideas. This is the space where things like like <a href="https://www.linkedin.com/posts/dassaultsystemes_discover-magic-wheelchair-with-chinloo-and-activity-7096868474366353408-Ri5G/" target="_blank">Magic Wheelchairs</a> and <a href="https://www.facebook.com/watch/?v=836507572117938" target="_blank">dinosaurs</a> are transformed from concept to reality.</p>
-              <div class="expand-meta">
-                <span class="expand-chip">Hands-On</span>
-                <span class="expand-chip">Hardware</span>
-                <span class="expand-chip">FAB Lab</span>
-              </div>
               <div class="expand-section-label">About the Presenters</div>
               <p><strong style="color:var(--white)">Chinloo Lama</strong> and <strong style="color:var(--white)">Sal Lama</strong> run the FAB Lab at Dassault Systèmes in Waltham. They bring deep hands-on expertise with the lab's fabrication and prototyping equipment.</p>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- FEATURED PANEL -->
+      <div>
+        <div class="session-round-hdr fade-in">
+          <div class="session-round-label">Panel Discussion · 4:15 PM — 5:15 PM</div>
+          <!-- <div class="session-round-name">Panel Discussion</div> -->
+        </div>
+        <div class="fade-in">
+          <div class="session-card session-featured panel">
+            <div class="session-card-top">
+              <div class="session-type">Panel Discussion</div>
+              <div class="session-title">AI in Engineering</div>
+              <div class="session-presenter">Joe Lance · Or Israel · Suchit Jain · Oded Maron</div>
+              <div class="session-desc">A candid panel on how AI is changing the engineering workflow — design automation, DFM, connected teams, and where the tools are actually useful vs. overhyped.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">AI &amp; Automation</span>
+                <span class="expand-chip">Panel Q&amp;A</span>
+                <span class="expand-chip">Open to All</span>
+              </div>
+              <button class="session-expand-btn" onclick="toggleCard(this)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Details
+              </button>
+            </div>
+            <div class="session-expand-content">
+              <div class="expand-section-label">About the Session</div>
+              <p>A frank, practitioner-focused conversation on where AI is actually moving the needle in engineering. Panelists will cover design automation, DFM co-pilots, AI-assisted drawing review, and the gap between vendor marketing and real-world utility. Expect candid takes, audience Q&A, and no vendor pitches.</p>
+              <div class="expand-section-label">Panelists</div>
+              <p><strong style="color:var(--white)">Joe Lance</strong> — SolidWorks Champion of the Year and retired Principal Mechanical Technologist with decades of design engineering experience.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Or Israel</strong> — CEO of Bananaz.ai, building AI tools that integrate directly into the SolidWorks design workflow.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Suchit Jain</strong> — VP of Strategy & Business Development at Dassault Systèmes SolidWorks, driving the product vision and ecosystem partnerships.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Oded Maron</strong> — Head of AI at MassRobotics, bringing deep expertise in applied machine learning and robotics innovation.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1742,14 +1795,6 @@ footer {
     <div class="speakers-grid">
 
       <div class="speaker-card fade-in">
-        <div class="speaker-avatar"><img src="images/DH.png" alt="Dan Herzberg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
-        <div class="speaker-name">Dan Herzberg</div>
-        <div class="speaker-role">Panel Moderator</div>
-        <div class="speaker-company">BostonSWUG</div>
-        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
-      </div>
-
-      <div class="speaker-card fade-in">
         <div class="speaker-avatar"><img src="images/JL.png" alt="Joe Lance" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
         <div class="speaker-name">Joe Lance</div>
         <div class="speaker-role">SolidWorks Champion of the Year<br>
@@ -1764,7 +1809,7 @@ footer {
         <div class="speaker-name">Austin Etter</div>
         <div class="speaker-role">AI Software Consultant</div>
         <div class="speaker-company">Bananaz.ai</div>
-        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span><span class="speaker-tag">Demo</span></div>
+        <div class="speaker-tags"><span class="speaker-tag">Demo</span></div>
       </div>
 
       <div class="speaker-card fade-in">
@@ -1820,6 +1865,14 @@ footer {
         <div class="speaker-name">Oded Maron</div>
         <div class="speaker-role">Head of AI</div>
         <div class="speaker-company">MassRobotics</div>
+        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar"><img src="images/OI.png" alt="Or Israel" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
+        <div class="speaker-name">Or Israel</div>
+        <div class="speaker-role">CEO</div>
+        <div class="speaker-company">Bananaz.ai</div>
         <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
       </div>
 
@@ -1996,6 +2049,24 @@ document.querySelectorAll('.speaker-filter-btn').forEach(btn => {
       } else {
         const tags = card.querySelectorAll('.speaker-tag');
         const match = Array.from(tags).some(t => t.textContent === filter);
+        card.style.display = match ? '' : 'none';
+      }
+    });
+  });
+});
+
+// Session tag filter
+document.querySelectorAll('.session-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.session-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.session-rounds .session-card').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = '';
+      } else {
+        const chips = card.querySelectorAll('.expand-chip');
+        const match = Array.from(chips).some(c => c.textContent.trim() === filter);
         card.style.display = match ? '' : 'none';
       }
     });
