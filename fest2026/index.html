@@ -518,6 +518,14 @@ section { padding: 100px 40px; }
   color: var(--white2);
   line-height: 1.5;
 }
+.agenda-desc ul {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
 .agenda-rooms {
   display: flex;
   gap: 8px;
@@ -1188,6 +1196,7 @@ footer {
   section { padding: 64px 20px; }
   .hero { min-height: 65svh; padding: 72px 20px 64px; }
 .hero-title { font-size: clamp(30px, 9vw, 52px); margin-bottom: 24px; }
+  .hero-title-brand { font-size: clamp(26px, 7.8vw, 52px); }
   .hero-meta {
     flex-direction: column;
     gap: 16px;
@@ -1245,13 +1254,27 @@ footer {
   .session-card { padding: 24px 20px; }
   .speaker-card { padding: 20px 18px; }
 }
+.ad-unit {
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--ink);
+}
+.ad-unit-label {
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white3);
+  margin-bottom: 6px;
+}
 </style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9758094754530463" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="images/swug-icon.png" alt="BostonSWUG" class="nav-logo-img"></a>
+  <a href="#" class="nav-logo"><img src="images/festival-logo.png" alt="BostonSWUG Festival" class="nav-logo-img"></a>
   <ul class="nav-links">
     <li><a href="#agenda">Agenda</a></li>
     <li><a href="#sessions">Sessions</a></li>
@@ -1300,11 +1323,8 @@ footer {
   <div class="hero-eyebrow">4th Annual — Free to Attend</div>
 
   <div class="hero-title-row">
-    <div class="hero-festival-badge">
-      <img src="images/festival-logo.png" alt="BostonSWUG Festival" class="festival-badge-img">
-    </div>
     <h1 class="hero-title">
-      BostonSWUG
+      <span class="hero-title-brand">BostonSWUG</span>
       <em>Summer Festival</em>
     </h1>
   </div>
@@ -1317,12 +1337,12 @@ footer {
     <div class="hero-meta-sep"></div>
     <div class="hero-meta-item">
       <span class="hero-meta-label">Time</span>
-      <span class="hero-meta-value">12:00 – 5:00 PM</span>
+      <span class="hero-meta-value">12:00 – 6:00 PM</span>
     </div>
     <div class="hero-meta-sep"></div>
     <div class="hero-meta-item">
       <span class="hero-meta-label">Location</span>
-      <span class="hero-meta-value">Dassault Systèmes HQ, 185 Wyman St, Waltham, MA</span>
+      <span class="hero-meta-value"><a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> HQ, 185 Wyman St, Waltham, MA</span>
     </div>
   </div>
 
@@ -1414,8 +1434,15 @@ footer {
         <div class="agenda-time">12:00<br>PM</div>
         <div class="agenda-body">
           <div class="agenda-label">Registration + Welcome</div>
-          <div class="agenda-title">Lunch & Networking</div>
-          <div class="agenda-desc">Arrive, grab food, meet the community. Registration opens at noon.</div>
+          <div class="agenda-title">Lunch & Games on the Green</div>
+          <div class="agenda-desc">Arrive, grab food, and kick off the afternoon outside. Registration opens at noon.
+            <ul>
+              <li>Lunch served in the courtyard</li>
+              <li>Pickleball on the green — pre-made paddles provided</li>
+              <li>Meet and mingle with engineers and designers from across the region</li>
+              <li>Inspired? Build your own custom paddle in the FAB Lab during the breakout rounds</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -1445,21 +1472,33 @@ footer {
               <div class="bc-by">Austin Etter</div>
               <span class="bc-room">Room 130F · 26 cap</span>
             </div>
-            <div class="breakout-col" onclick="goToSession('session-trimech')">
-              <div class="bc-org">TriMech</div>
-              <div class="bc-title">Trust The Pretty Pictures – Simulation Tips & Troubleshooting</div>
-              <div class="bc-by">Joe McDonough</div>
-              <span class="bc-room">Room 130G · 10 cap</span>
-            </div>
             <div class="breakout-col" onclick="goToSession('session-goengineer')">
               <div class="bc-org">GoEngineer</div>
-              <div class="bc-title">SOLIDWORKS Sketches: Techniques, Tricks & Things You Missed</div>
+              <div class="bc-title"><a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> Sketches: Techniques, Tricks & Things You Missed</div>
               <div class="bc-by">Jay Pinheiro</div>
               <span class="bc-room">Room 130H · 12 cap</span>
+            </div>
+            <div class="breakout-col" onclick="goToSession('session-fablab-r1')">
+              <div class="bc-org">Dassault Systèmes</div>
+              <div class="bc-title">Build Your Own Pickleball Paddle</div>
+              <div class="bc-by">Chinloo Lama + Sal Lama</div>
+              <span class="bc-room">FAB Lab</span>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="agenda-spacer"></div>
+
+      <div class="agenda-item">
+        <div class="agenda-time" style="padding:12px 20px;">2:50<br>PM</div>
+        <div class="agenda-body" style="padding:12px 28px;">
+          <div class="agenda-label">Break</div>
+          <div class="agenda-title">Snack Break</div>
+        </div>
+      </div>
+
+      <div class="agenda-spacer"></div>
 
       <div class="agenda-item featured breakout">
         <div class="agenda-time">3:00<br>PM</div>
@@ -1468,21 +1507,27 @@ footer {
             <div class="agenda-label">Breakout Round 2 — 50 min · Choose Your Track</div>
           </div>
           <div class="breakout-cols">
+            <div class="breakout-col" onclick="goToSession('session-trimech')">
+              <div class="bc-org">TriMech</div>
+              <div class="bc-title">From Tool to Teammate: Meet the AI Inside <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a></div>
+              <div class="bc-by">Joe Perera</div>
+              <span class="bc-room">Room 130G · 10 cap</span>
+            </div>
             <div class="breakout-col" onclick="goToSession('session-stephanie')">
-              <div class="bc-org">ICU Medical | SWUG NYC</div>
+              <div class="bc-org"><a href="https://www.icumed.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">ICU Medical</a> | SWUG NYC</div>
               <div class="bc-title">Consistency by Design</div>
               <div class="bc-by">Stephanie Hayna</div>
               <span class="bc-room">Room 130F · 26 cap</span>
             </div>
             <div class="breakout-col" onclick="goToSession('session-earl')">
               <div class="bc-org">Visiativ</div>
-              <div class="bc-title">Managing SOLIDWORKS Data in the Cloud</div>
+              <div class="bc-title">Managing <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> Data in the Cloud</div>
               <div class="bc-by">Earl Hasz</div>
               <span class="bc-room">Room 130G · 10 cap</span>
             </div>
             <div class="breakout-col" onclick="goToSession('session-fablab')">
               <div class="bc-org">Dassault Systèmes</div>
-              <div class="bc-title">Hands-On FAB Lab Session</div>
+              <div class="bc-title">Build Your Own Pickleball Paddle</div>
               <div class="bc-by">Chinloo Lama + Sal Lama</div>
               <span class="bc-room">FAB Lab</span>
             </div>
@@ -1493,7 +1538,7 @@ footer {
       <div class="agenda-spacer"></div>
 
       <div class="agenda-item featured">
-        <div class="agenda-time">4:15<br>PM</div>
+        <div class="agenda-time">4:00<br>PM</div>
         <div class="agenda-body">
           <div class="agenda-label">Panel</div>
           <div class="agenda-title">AI in Engineering Panel Discussion</div>
@@ -1505,11 +1550,11 @@ footer {
       <div class="agenda-spacer"></div>
 
       <div class="agenda-item">
-        <div class="agenda-time">5:15<br>PM</div>
+        <div class="agenda-time">5:00<br>PM</div>
         <div class="agenda-body">
           <div class="agenda-label">Social &amp; Closing</div>
           <div class="agenda-title">Cocktail Hour, Raffle Prizes & Closing Remarks</div>
-          <div class="agenda-desc">Drinks and networking hosted by Dassault Systèmes, raffle prizes, announcements, and wrapping up the summer's best afternoon.</div>
+          <div class="agenda-desc">Drinks and networking hosted by <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a>, raffle prizes, announcements, and wrapping up the summer's best afternoon.</div>
           <div class="agenda-rooms"><span class="room-chip">EBC Central</span></div>
         </div>
       </div>
@@ -1550,12 +1595,12 @@ footer {
           <div class="session-round-label">Breakout Round 1 · 2:00 PM — 2:50 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
-        <div class="session-round-grid fade-in">
+        <div class="session-round-grid fade-in" style="grid-template-columns: repeat(4, 1fr);">
 
           <!-- Bananaz -->
           <div class="session-card" id="session-bananaz">
             <div class="session-card-top">
-              <div class="session-type">Product Demo · Bananaz.ai</div>
+              <div class="session-type">Product Demo · <a href="https://www.bananaz.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Bananaz.ai</a></div>
               <div class="session-title">Practical AI for the Modern SolidWorks Designer</div>
               <div class="session-presenter"><a href="#speaker-austin-etter" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Austin Etter</a></div>
               <div class="session-desc">Live demos of DFM checks, cost-reduction analysis, drawing review checklists, async design reviews, and visual comparison for design change validation.</div>
@@ -1571,46 +1616,21 @@ footer {
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>A live demo-heavy session showcasing how Bananaz.ai fits into the SolidWorks workflow today. Austin will walk through: automated DFM checks, 3D cost-reduction analysis, intelligent drawing review checklists, async 2D/3D design reviews, and visual comparison for design change validation. No slides — just running the tools in real time.</p>
+              <p>A live demo-heavy session showcasing how <a href="https://www.bananaz.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Bananaz.ai</a> fits into the SolidWorks workflow today. Austin will walk through: automated DFM checks, 3D cost-reduction analysis, intelligent drawing review checklists, async 2D/3D design reviews, and visual comparison for design change validation. No slides — just running the tools in real time.</p>
               <div class="expand-meta">
                 <span class="expand-chip">Room 130F · 26 cap</span>
               </div>
               <div class="expand-section-label">About Austin Etter</div>
-              <p>Austin is an AI Software Consultant at Bananaz.ai who works with engineering teams to integrate AI tooling into SolidWorks-based design and review workflows.</p>
+              <p>Austin is an AI Software Consultant at <a href="https://www.bananaz.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Bananaz.ai</a> who works with engineering teams to integrate AI tooling into SolidWorks-based design and review workflows.</p>
             </div>
           </div>
 
           <!-- TriMech -->
-          <div class="session-card" id="session-trimech">
-            <div class="session-card-top">
-              <div class="session-type">Technical Talk · TriMech</div>
-              <div class="session-title">Trust The Pretty Pictures – Simulation Tips & Troubleshooting</div>
-              <div class="session-presenter">Joe McDonough</div>
-              <div class="session-desc">Delighters for everyone — whether you're new to SOLIDWORKS Simulation or a seasoned FEA user. Tips, common pitfalls, and troubleshooting techniques for desktop Simulation.</div>
-              <button class="session-expand-btn" onclick="toggleCard(this)">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Details
-              </button>
-            </div>
-            <div class="session-expand-content">
-              <div class="expand-section-label">About the Session</div>
-              <p>A simulation session designed to be accessible to all levels — from engineers running their first FEA study to power users looking to sharpen their technique. Joe draws on years of delivering this content at SWUGs and training engagements, covering simulation tips, common setup mistakes, and troubleshooting approaches that apply to the most widely-used desktop SOLIDWORKS Simulation tools.</p>
-              <div class="expand-meta">
-                <span class="expand-chip">FEA</span>
-                <span class="expand-chip">Simulation</span>
-                <span class="expand-chip">All Levels</span>
-                <span class="expand-chip">Room 130G · 10 cap</span>
-              </div>
-              <div class="expand-section-label">About Joe McDonough</div>
-              <p>Solutions Consultant, Simulation Applications & Services at TriMech. Based in the Manchester, NH area, Joe has been delivering simulation content at SWUGs and training engagements across the region. He brings deep hands-on expertise in SOLIDWORKS Simulation, FEA, Flow Simulation, and injection molding analysis.</p>
-            </div>
-          </div>
-
           <!-- GoEngineer -->
           <div class="session-card" id="session-goengineer">
             <div class="session-card-top">
-              <div class="session-type">Session · GoEngineer</div>
-              <div class="session-title">SOLIDWORKS Sketches: Techniques, Tricks & Things You Missed</div>
+              <div class="session-type">Session · <a href="https://www.goengineer.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">GoEngineer</a></div>
+              <div class="session-title"><a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> Sketches: Techniques, Tricks & Things You Missed</div>
               <div class="session-presenter"><a href="#speaker-jay-jacobs" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Jay Pinheiro</a></div>
               <div class="session-desc">A session with something for everybody — from daily users to power modelers. Walk through sketch best practices, recommended system settings, built-in shortcuts you've forgotten about, relationship management tips, and underused sketch tools that deserve a second look.</div>
               <div class="expand-meta" style="margin-top:14px">
@@ -1618,8 +1638,9 @@ footer {
                 <span class="expand-chip">Sketching</span>
                 <span class="expand-chip">Best Practices</span>
               </div>
-              <button class="session-expand-btn" onclick="this.closest('.session-card').classList.toggle('expanded')">
-                More info <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <button class="session-expand-btn" onclick="toggleCard(this)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Details
               </button>
             </div>
             <div class="session-expand-content">
@@ -1629,7 +1650,33 @@ footer {
                 <span class="expand-chip">Room 130H · 12 cap</span>
               </div>
               <div class="expand-section-label">About Jay Pinheiro</div>
-              <p>Jay is an Application Engineer at GoEngineer, a leading SolidWorks Value Added Reseller. He brings practical, day-to-day SolidWorks expertise and a knack for surfacing the features most users overlook.</p>
+              <p>Jay is an Application Engineer at <a href="https://www.goengineer.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">GoEngineer</a>, a leading SolidWorks Value Added Reseller. He brings practical, day-to-day SolidWorks expertise and a knack for surfacing the features most users overlook.</p>
+            </div>
+          </div>
+
+          <!-- FAB Lab Round 1 -->
+          <div class="session-card" id="session-fablab-r1">
+            <div class="session-card-top">
+              <div class="session-type">Hands-On Workshop · <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a></div>
+              <div class="session-title">Build Your Own Pickleball Paddle</div>
+              <div class="session-presenter"><a href="#speaker-chinloo-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Chinloo Lama</a> + <a href="#speaker-sal-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Sal Lama</a></div>
+              <div class="session-desc">Design and build a custom pickleball paddle in the <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> FAB Lab — create your own laser-engraved or vinyl-cut decoration, assemble it handle-to-head, then head outside to play.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">Hands-On</span>
+                <span class="expand-chip">FAB Lab</span>
+                <span class="expand-chip">All Levels</span>
+              </div>
+              <button class="session-expand-btn" onclick="toggleCard(this)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Details
+              </button>
+            </div>
+            <div class="session-expand-content">
+              <div class="expand-section-label">About the Session</div>
+              <p>Start with a demo and design overview of the paddle in <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a>, then get creative — sketch or model your own custom decoration to be laser engraved or vinyl cut onto your paddle. You'll assemble all the parts (grip tape included) and finish the session by heading outside for a game of pickleball with your new paddle in hand.</p>
+              <p style="margin-top:10px">Pre-made paddles will be available on the pickleball court during the festival so you can try the game before (or instead of) the workshop. Runs twice — once each breakout round — so you don't have to miss other sessions to join.</p>
+              <div class="expand-section-label">About the Presenters</div>
+              <p><strong style="color:var(--white)">Chinloo Lama</strong> and <strong style="color:var(--white)">Sal Lama</strong> run the FAB Lab at <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> in Waltham — the hands-on space where projects like <a href="https://www.linkedin.com/posts/dassaultsystemes_discover-magic-wheelchair-with-chinloo-and-activity-7096868474366353408-Ri5G/" target="_blank">Magic Wheelchairs</a> and <a href="https://www.facebook.com/watch/?v=836507572117938" target="_blank">life-size dinosaurs</a> go from concept to reality.</p>
             </div>
           </div>
 
@@ -1642,12 +1689,40 @@ footer {
           <div class="session-round-label">Breakout Round 2 · 3:00 PM — 3:50 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
-        <div class="session-round-grid fade-in">
+        <div class="session-round-grid fade-in" style="grid-template-columns: repeat(4, 1fr);">
+
+          <!-- TriMech -->
+          <div class="session-card" id="session-trimech">
+            <div class="session-card-top">
+              <div class="session-type">Session · <a href="https://www.trimech.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">TriMech</a></div>
+              <div class="session-title">From Tool to Teammate: Meet the AI Inside <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a></div>
+              <div class="session-presenter"><a href="#speaker-joe-perera" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Joe Perera</a></div>
+              <div class="session-desc">Discover how AI is embedded in <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> to help you make smarter decisions at every stage of your design process — covering what's available today and a preview of powerful innovations on the horizon.</div>
+              <div class="expand-meta" style="margin-top:14px">
+                <span class="expand-chip">AI &amp; Automation</span>
+              </div>
+              <button class="session-expand-btn" onclick="toggleCard(this)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Details
+              </button>
+            </div>
+            <div class="session-expand-content">
+              <div class="expand-section-label">About the Session</div>
+              <p>In this session, we'll discover how AI is embedded in <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> to help you make smarter decisions in your design process. We'll explore capabilities available today, along with a preview of powerful upcoming innovations. Dassault has introduced new AI-driven virtual companions that can advise, analyze, and execute workflows throughout your design process.</p>
+              <div class="expand-meta">
+                <span class="expand-chip">AI &amp; Automation</span>
+                <span class="expand-chip">Room 130G · 10 cap</span>
+              </div>
+              <div class="expand-section-label">About Joe Perera</div>
+              <p>Joe is a Solutions Consultant at <a href="https://www.trimech.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">TriMech</a> with over 12 years of experience in the design engineering industry. He has been using <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> since 2010 and specializes in <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> 3D CAD and PDM. He brings a practitioner's perspective to data management — he was a <a href="https://www.trimech.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">TriMech</a> customer before joining the team.</p>
+            </div>
+          </div>
+
 
           <!-- Stephanie -->
           <div class="session-card" id="session-stephanie">
             <div class="session-card-top">
-              <div class="session-type">Technical Talk · ICU Medical</div>
+              <div class="session-type">Technical Talk · <a href="https://www.icumed.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">ICU Medical</a></div>
               <div class="session-title">Consistency by Design: Best Practices for Regulated Environments</div>
               <div class="session-presenter"><a href="#speaker-stephanie-hayna" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Stephanie Hayna</a></div>
               <div class="session-desc">Best practices for regulated environments — repeatable validated design processes, compliance-ready workflows, and standardization across medtech engineering teams.</div>
@@ -1663,7 +1738,7 @@ footer {
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>Medical device manufacturing demands precision, standardization, and seamless cross-functional collaboration. This session explores proven SOLIDWORKS best practices and workflows used in the medtech industry to streamline product development and ensure compliance with strict regulatory standards.
+              <p>Medical device manufacturing demands precision, standardization, and seamless cross-functional collaboration. This session explores proven <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> best practices and workflows used in the medtech industry to streamline product development and ensure compliance with strict regulatory standards.
                  <br><br>
                  Attendees will learn how to build repeatable, validated design processes covering techniques to work and study components, drawings, part details and more. We’ll look at techniques to drive consistency across engineering teams.
                  <br><br>
@@ -1672,9 +1747,9 @@ footer {
                 <span class="expand-chip">Room 130F · 26 cap</span>
               </div>
               <div class="expand-section-label">About Stephanie Hayna</div>
-              <p>Stephanie is a seasoned design engineer with over 10 years of experience in medical device development and consumer product innovation. She currently works at ICU Medical, where she leads the certification and verification of subcutaneous infusion sets and hypodermic needle technologies.<br>
+              <p>Stephanie is a seasoned design engineer with over 10 years of experience in medical device development and consumer product innovation. She currently works at <a href="https://www.icumed.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">ICU Medical</a>, where she leads the certification and verification of subcutaneous infusion sets and hypodermic needle technologies.<br>
                 <br>
-                Beyond her professional role, Stephanie leads the SOLIDWORKS User Group of NYC, organizing community events and technical workshops. Passionate about the intersection of CAD and practical design, she continually explores new ways to improve engineering workflows. In her spare time, she enjoys creating personal 3D printing projects and promoting hands-on learning within the design community.
+                Beyond her professional role, Stephanie leads the <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> User Group of NYC, organizing community events and technical workshops. Passionate about the intersection of CAD and practical design, she continually explores new ways to improve engineering workflows. In her spare time, she enjoys creating personal 3D printing projects and promoting hands-on learning within the design community.
 </p>
             </div>
           </div>
@@ -1682,10 +1757,10 @@ footer {
           <!-- Earl -->
           <div class="session-card" id="session-earl">
             <div class="session-card-top">
-              <div class="session-type">Technical Talk · Visiativ</div>
-              <div class="session-title">Managing SOLIDWORKS Data in the Cloud</div>
+              <div class="session-type">Technical Talk · <a href="https://www.visiativsolutions.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Visiativ</a></div>
+              <div class="session-title">Managing <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> Data in the Cloud</div>
               <div class="session-presenter"><a href="#speaker-earl-hasz" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Earl Hasz</a></div>
-              <div class="session-desc">A practical look at how SOLIDWORKS data storage is evolving in cloud environments — covering strategies, tools, and real-world implications for engineering teams.</div>
+              <div class="session-desc">A practical look at how <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> data storage is evolving in cloud environments — covering strategies, tools, and real-world implications for engineering teams.</div>
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">Data Management</span>
                 <span class="expand-chip">Cloud</span>
@@ -1698,26 +1773,26 @@ footer {
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>How do you manage SOLIDWORKS data when your team, suppliers, and stakeholders need access from different locations? This presentation explores the cloud-based data management tools included with SOLIDWORKS and demonstrates how teams can securely store, organize, share, review, revise, and release design data. Through a practical workflow demonstration, you'll see how both CAD and non-CAD users can collaborate on projects while maintaining revision control and data integrity. Ideal for SOLIDWORKS users who want to better understand modern cloud-based collaboration and data management.</p>
+              <p>How do you manage <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> data when your team, suppliers, and stakeholders need access from different locations? This presentation explores the cloud-based data management tools included with <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> and demonstrates how teams can securely store, organize, share, review, revise, and release design data. Through a practical workflow demonstration, you'll see how both CAD and non-CAD users can collaborate on projects while maintaining revision control and data integrity. Ideal for <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> users who want to better understand modern cloud-based collaboration and data management.</p>
               <div class="expand-meta">
                 <span class="expand-chip">Room 130G · 10 cap</span>
               </div>
               <div class="expand-section-label">About Earl Hasz</div>
-              <p>Earl is Technical Director at Visiativ Solutions Inc, focused on delivering innovative solutions across the SOLIDWORKS ecosystem. Prior to Visiativ, he spent 22 years at SOLIDWORKS and Dassault Systèmes in roles spanning product management, technical leadership, and customer success. Earl brings deep expertise in CAD, PDM, and PLM, helping engineering teams drive digital transformation and efficiency.</p>
+              <p>Earl is Technical Director at <a href="https://www.visiativsolutions.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Visiativ</a> Solutions Inc, focused on delivering innovative solutions across the <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> ecosystem. Prior to <a href="https://www.visiativsolutions.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Visiativ</a>, he spent 22 years at <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a> and <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> in roles spanning product management, technical leadership, and customer success. Earl brings deep expertise in CAD, PDM, and PLM, helping engineering teams drive digital transformation and efficiency.</p>
             </div>
           </div>
 
           <!-- FAB Lab -->
           <div class="session-card" id="session-fablab">
             <div class="session-card-top">
-              <div class="session-type">Hands-On Workshop · Dassault Systèmes</div>
-              <div class="session-title">FAB Lab — Build Something</div>
-              <div class="session-presenter"><a href="#speaker-chinloo-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Chinloo Lama</a> + <a href="#speaker-sal-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Sal Lama</a></div>
-              <div class="session-desc">Get hands-on with real hardware in the FAB Lab. Expect to actually make something — details coming soon.</div>
+              <div class="session-type">Hands-On Workshop · <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a></div>
+              <div class="session-title">Build Your Own Pickleball Paddle</div>
+              <div class="session-presenter"><a href="#speaker-chinloo-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Chinloo Lama</a> + <a href="#speaker-sal-lama" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Sal Lama</a></div>
+              <div class="session-desc">Design and build a custom pickleball paddle in the <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> FAB Lab — create your own laser-engraved or vinyl-cut decoration, assemble it handle-to-head, then head outside to play.</div>
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">Hands-On</span>
-                <span class="expand-chip">Hardware</span>
                 <span class="expand-chip">FAB Lab</span>
+                <span class="expand-chip">All Levels</span>
               </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1726,9 +1801,10 @@ footer {
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>The Dassault Systèmes FAB Lab is a hands-on space packed with hardware, tools, and big ideas. This is the space where things like like <a href="https://www.linkedin.com/posts/dassaultsystemes_discover-magic-wheelchair-with-chinloo-and-activity-7096868474366353408-Ri5G/" target="_blank">Magic Wheelchairs</a> and <a href="https://www.facebook.com/watch/?v=836507572117938" target="_blank">dinosaurs</a> are transformed from concept to reality.</p>
+              <p>Start with a demo and design overview of the paddle in <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a>, then get creative — sketch or model your own custom decoration to be laser engraved or vinyl cut onto your paddle. You'll assemble all the parts (grip tape included) and finish the session by heading outside for a game of pickleball with your new paddle in hand.</p>
+              <p style="margin-top:10px">Pre-made paddles will be available on the pickleball court during the festival so you can try the game before (or instead of) the workshop. Runs twice — once each breakout round — so you don't have to miss other sessions to join.</p>
               <div class="expand-section-label">About the Presenters</div>
-              <p><strong style="color:var(--white)">Chinloo Lama</strong> and <strong style="color:var(--white)">Sal Lama</strong> run the FAB Lab at Dassault Systèmes in Waltham. They bring deep hands-on expertise with the lab's fabrication and prototyping equipment.</p>
+              <p><strong style="color:var(--white)">Chinloo Lama</strong> and <strong style="color:var(--white)">Sal Lama</strong> run the FAB Lab at <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> in Waltham — the hands-on space where projects like <a href="https://www.linkedin.com/posts/dassaultsystemes_discover-magic-wheelchair-with-chinloo-and-activity-7096868474366353408-Ri5G/" target="_blank">Magic Wheelchairs</a> and <a href="https://www.facebook.com/watch/?v=836507572117938" target="_blank">life-size dinosaurs</a> go from concept to reality.</p>
             </div>
           </div>
 
@@ -1738,7 +1814,7 @@ footer {
       <!-- FEATURED PANEL -->
       <div>
         <div class="session-round-hdr fade-in">
-          <div class="session-round-label">Panel Discussion · 4:15 PM — 5:15 PM</div>
+          <div class="session-round-label">Panel Discussion · 4:00 PM — 5:00 PM</div>
           <!-- <div class="session-round-name">Panel Discussion</div> -->
         </div>
         <div class="fade-in">
@@ -1746,7 +1822,14 @@ footer {
             <div class="session-card-top">
               <div class="session-type">Panel Discussion</div>
               <div class="session-title">AI in Engineering</div>
-              <div class="session-presenter"><a href="#speaker-joe-lance" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Joe Lance</a> · <a href="#speaker-or-israel" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Or Israel</a> · <a href="#speaker-suchit-jain" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Suchit Jain</a> · <a href="#speaker-oded-maron" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Oded Maron</a></div>
+              <div class="session-presenter">
+                <span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle;">
+                  <img src="images/JL.png" alt="Joe Lance" style="width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid rgba(193,41,46,.4);">
+                  <a href="#speaker-joe-lance" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Joe Lance</a>
+                  <span style="font-size:9px;background:var(--gold);color:var(--white);padding:2px 7px;border-radius:99px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Moderator</span>
+                </span>
+                · <a href="#speaker-or-israel" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Or Israel</a> · <a href="#speaker-suchit-jain" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Suchit Jain</a> · <a href="#speaker-oded-maron" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Oded Maron</a> · <a href="#speaker-kishore-pagidi" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Kishore Pagidi</a>
+              </div>
               <div class="session-desc">A candid panel on how AI is changing the engineering workflow — design automation, DFM, connected teams, and where the tools are actually useful vs. overhyped.</div>
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">AI &amp; Automation</span>
@@ -1761,11 +1844,19 @@ footer {
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
               <p>A frank, practitioner-focused conversation on where AI is actually moving the needle in engineering. Panelists will cover design automation, DFM co-pilots, AI-assisted drawing review, and the gap between vendor marketing and real-world utility. Expect candid takes, audience Q&A, and no vendor pitches.</p>
-              <div class="expand-section-label">Panelists</div>
-              <p><strong style="color:var(--white)">Joe Lance</strong> — SolidWorks Champion of the Year and retired Principal Mechanical Technologist with decades of design engineering experience.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Or Israel</strong> — CEO of Bananaz.ai, building AI tools that integrate directly into the SolidWorks design workflow.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Suchit Jain</strong> — VP of Strategy & Business Development at Dassault Systèmes SolidWorks, driving the product vision and ecosystem partnerships.</p>
-              <p style="margin-top:10px"><strong style="color:var(--white)">Oded Maron</strong> — Head of AI at MassRobotics, bringing deep expertise in applied machine learning and robotics innovation.</p>
+              <div class="expand-section-label">Moderator &amp; Panelists</div>
+              <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">
+                <img src="images/JL.png" alt="Joe Lance" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;margin-top:2px;border:1px solid rgba(193,41,46,.4);">
+                <div>
+                  <strong style="color:var(--white)">Joe Lance</strong>
+                  <span style="font-size:9px;background:var(--gold);color:var(--white);padding:2px 7px;border-radius:99px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-left:6px;">Moderator</span>
+                  <p style="margin:4px 0 0;">SolidWorks Champion of the Year and retired Principal Mechanical Technologist with decades of design engineering experience.</p>
+                </div>
+              </div>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Or Israel</strong> — CEO of <a href="https://www.bananaz.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Bananaz.ai</a>, building AI tools that integrate directly into the SolidWorks design workflow.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Suchit Jain</strong> — VP of Strategy & Business Development at <a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> SolidWorks, driving the product vision and ecosystem partnerships.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Oded Maron</strong> — Head of AI at <a href="https://www.massrobotics.org" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">MassRobotics</a>, bringing deep expertise in applied machine learning and robotics innovation.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Kishore Pagidi</strong> — AI Product Manager at <a href="https://www.solidworks.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">SOLIDWORKS</a>, building AI agents and generative design experiences for 8M+ engineers worldwide.</p>
             </div>
           </div>
         </div>
@@ -1820,7 +1911,7 @@ footer {
         <div class="speaker-avatar"><img src="images/SH.png" alt="Stephanie Hayna" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
         <div class="speaker-name">Stephanie Hayna</div>
         <div class="speaker-role">Design Engineer</div>
-        <div class="speaker-company">ICU Medical | SWUG NYC</div>
+        <div class="speaker-company"><a href="https://www.icumed.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">ICU Medical</a> | SWUG NYC</div>
         <div class="speaker-tags"><span class="speaker-tag">Medtech</span><span class="speaker-tag">Best Practices</span></div>
       </div>
 
@@ -1860,7 +1951,7 @@ footer {
         <div class="speaker-avatar"><img src="images/SJ.png" alt="Suchit Jain" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
         <div class="speaker-name">Suchit Jain</div>
         <div class="speaker-role">VP of Strategy & Business Development</div>
-        <div class="speaker-company">Dassault Systèmes SolidWorks</div>
+        <div class="speaker-company"><a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> SolidWorks</div>
         <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
       </div>
 
@@ -1872,20 +1963,28 @@ footer {
         <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
       </div>
 
+      <div class="speaker-card fade-in" id="speaker-kishore-pagidi">
+        <div class="speaker-avatar"><img src="images/KP.png" alt="Kishore Pagidi" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
+        <div class="speaker-name">Kishore Pagidi</div>
+        <div class="speaker-role">AI Product Manager</div>
+        <div class="speaker-company">SOLIDWORKS</div>
+        <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
+      </div>
+
+      <div class="speaker-card fade-in" id="speaker-joe-perera">
+        <div class="speaker-avatar"></div>
+        <div class="speaker-name">Joe Perera</div>
+        <div class="speaker-role">Solutions Consultant</div>
+        <div class="speaker-company">TriMech</div>
+        <div class="speaker-tags"><span class="speaker-tag">Demo</span></div>
+      </div>
+
       <div class="speaker-card fade-in" id="speaker-or-israel">
         <div class="speaker-avatar"><img src="images/OI.png" alt="Or Israel" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;"></div>
         <div class="speaker-name">Or Israel</div>
         <div class="speaker-role">CEO</div>
         <div class="speaker-company">Bananaz.ai</div>
         <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
-      </div>
-
-      <div class="speaker-card fade-in">
-        <div class="speaker-avatar">JM</div>
-        <div class="speaker-name">Joe McDonough</div>
-        <div class="speaker-role">Solutions Consultant</div>
-        <div class="speaker-company">TriMech</div>
-        <div class="speaker-tags"><span class="speaker-tag">Simulation</span><span class="speaker-tag">FEA</span></div>
       </div>
 
       <div class="speaker-card speaker-more fade-in">
@@ -1897,12 +1996,25 @@ footer {
   </div>
 </section>
 
+<!-- AD UNIT 1: between Speakers and Venue -->
+<!-- To activate: create a Display ad unit in AdSense and replace data-ad-slot value -->
+<div class="ad-unit">
+  <div class="ad-unit-label">Advertisement</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9758094754530463"
+       data-ad-slot="5582389929"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
 <!-- VENUE -->
 <section class="venue" id="venue">
   <div class="max">
     <div class="section-hdr fade-in">
       <div class="section-eyebrow">Venue</div>
-      <h2 class="section-title">Dassault Systèmes Waltham</h2>
+      <h2 class="section-title"><a href="https://www.3ds.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">Dassault Systèmes</a> Waltham</h2>
     </div>
     <div class="venue-inner fade-in">
       <div class="venue-map">
@@ -1928,7 +2040,7 @@ footer {
           <div>
             <div class="venue-detail-label">Date & Time</div>
             <div class="venue-detail-value">Friday, June 26, 2026</div>
-            <div class="venue-detail-sub">12:00 PM – 5:00 PM · Doors open at noon</div>
+            <div class="venue-detail-sub">12:00 PM – 6:00 PM · Doors open at noon</div>
           </div>
         </div>
         <div class="venue-detail-item">
@@ -1977,6 +2089,19 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- AD UNIT 2: above footer -->
+<!-- To activate: create a Display ad unit in AdSense and replace data-ad-slot value -->
+<div class="ad-unit">
+  <div class="ad-unit-label">Advertisement</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9758094754530463"
+       data-ad-slot="5582389929"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
 <!-- FOOTER -->
 <footer>
