@@ -1447,8 +1447,8 @@ footer {
             </div>
             <div class="breakout-col" onclick="goToSession('session-trimech')">
               <div class="bc-org">TriMech</div>
-              <div class="bc-title">Session details coming soon</div>
-              <div class="bc-by">Joe Perera</div>
+              <div class="bc-title">Trust The Pretty Pictures – Simulation Tips & Troubleshooting</div>
+              <div class="bc-by">Joe McDonough</div>
               <span class="bc-room">Room 130G · 10 cap</span>
             </div>
             <div class="breakout-col" onclick="goToSession('session-goengineer')">
@@ -1583,22 +1583,26 @@ footer {
           <!-- TriMech -->
           <div class="session-card" id="session-trimech">
             <div class="session-card-top">
-              <div class="session-type">Session · TriMech</div>
-              <div class="session-title">Details Coming Soon</div>
-              <div class="session-presenter"><a href="#speaker-joe-perera" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Joe Perera</a></div>
-              <div class="session-desc">TriMech is a leading SolidWorks Value Added Reseller. Session topic and presenter will be confirmed shortly — check back for details.</div>
-              <button class="session-expand-btn" onclick="this.closest('.session-card').classList.toggle('expanded')">
-                More info <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="2,3 5,7 8,3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div class="session-type">Technical Talk · TriMech</div>
+              <div class="session-title">Trust The Pretty Pictures – Simulation Tips & Troubleshooting</div>
+              <div class="session-presenter">Joe McDonough</div>
+              <div class="session-desc">Delighters for everyone — whether you're new to SOLIDWORKS Simulation or a seasoned FEA user. Tips, common pitfalls, and troubleshooting techniques for desktop Simulation.</div>
+              <button class="session-expand-btn" onclick="toggleCard(this)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Details
               </button>
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>Session topic is being finalized. Check back soon for full details.</p>
+              <p>A simulation session designed to be accessible to all levels — from engineers running their first FEA study to power users looking to sharpen their technique. Joe draws on years of delivering this content at SWUGs and training engagements, covering simulation tips, common setup mistakes, and troubleshooting approaches that apply to the most widely-used desktop SOLIDWORKS Simulation tools.</p>
               <div class="expand-meta">
+                <span class="expand-chip">FEA</span>
+                <span class="expand-chip">Simulation</span>
+                <span class="expand-chip">All Levels</span>
                 <span class="expand-chip">Room 130G · 10 cap</span>
               </div>
-              <div class="expand-section-label">About Joe Perera</div>
-              <p>Joe is a Solutions Consultant at TriMech with over 12 years of experience in the design engineering industry. He has been using SOLIDWORKS since 2010 and specializes in SOLIDWORKS 3D CAD and PDM. He brings a practitioner's perspective to data management — he was a TriMech customer before joining the team.</p>
+              <div class="expand-section-label">About Joe McDonough</div>
+              <p>Solutions Consultant, Simulation Applications & Services at TriMech. Based in the Manchester, NH area, Joe has been delivering simulation content at SWUGs and training engagements across the region. He brings deep hands-on expertise in SOLIDWORKS Simulation, FEA, Flow Simulation, and injection molding analysis.</p>
             </div>
           </div>
 
@@ -1742,7 +1746,7 @@ footer {
             <div class="session-card-top">
               <div class="session-type">Panel Discussion</div>
               <div class="session-title">AI in Engineering</div>
-              <div class="session-presenter"><a href="#speaker-joe-lance" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Joe Lance</a> · <a href="#speaker-or-israel" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Or Israel</a> · <a href="#speaker-suchit-jain" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Suchit Jain</a> · <a href="#speaker-oded-maron" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Oded Maron</a></div>
+              <div class="session-presenter"><a href="#speaker-joe-lance" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);"></a>Joe Lance</a> · <a href="#speaker-or-israel" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Or Israel</a> · <a href="#speaker-suchit-jain" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Suchit Jain</a> · <a href="#speaker-oded-maron" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Oded Maron</a></div>
               <div class="session-desc">A candid panel on how AI is changing the engineering workflow — design automation, DFM, connected teams, and where the tools are actually useful vs. overhyped.</div>
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">AI &amp; Automation</span>
@@ -1874,6 +1878,14 @@ footer {
         <div class="speaker-role">CEO</div>
         <div class="speaker-company">Bananaz.ai</div>
         <div class="speaker-tags"><span class="speaker-tag">AI Panel</span></div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-avatar">JM</div>
+        <div class="speaker-name">Joe McDonough</div>
+        <div class="speaker-role">Solutions Consultant</div>
+        <div class="speaker-company">TriMech</div>
+        <div class="speaker-tags"><span class="speaker-tag">Simulation</span><span class="speaker-tag">FEA</span></div>
       </div>
 
       <div class="speaker-card speaker-more fade-in">
