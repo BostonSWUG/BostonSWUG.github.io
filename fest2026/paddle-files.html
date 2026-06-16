@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pickleball Paddle Files — BostonSWUG Summer Festival 2026</title>
+<meta name="description" content="Download the STEP and DXF files for the Build Your Own Pickleball Paddle workshop at the 4th Annual BostonSWUG Summer Festival, June 26, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0b0f;
+  --ink2: #13151c;
+  --ink3: #1c1f2a;
+  --gold: #c1292e;
+  --gold2: #d9403a;
+  --gold-dim: rgba(193,41,46,.12);
+  --white: #f5f3ee;
+  --white2: #ccc9c0;
+  --white3: #a8a49e;
+  --line: rgba(245,243,238,.08);
+  --r: 6px;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'Instrument Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .5;
+}
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(10,11,15,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo-img { height: 40px; width: auto; display: block; }
+.nav-back {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white2);
+  text-decoration: none;
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--white); }
+section { padding: 100px 40px; }
+.max { max-width: 880px; margin: 0 auto; }
+.page-hero { min-height: 38vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 40px 60px; position: relative; }
+.section-eyebrow {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.page-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+.page-sub { font-size: 16px; color: var(--white2); line-height: 1.7; max-width: 620px; }
+.section-label {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.card {
+  background: var(--ink2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px;
+  margin-bottom: 16px;
+}
+.files-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+.file-card {
+  background: var(--ink3);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color .2s, transform .2s;
+}
+.file-card:hover { border-color: rgba(193,41,46,.3); transform: translateY(-2px); }
+.file-ext {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .08em;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(193,41,46,.2);
+  border-radius: var(--r);
+  padding: 4px 10px;
+  width: fit-content;
+}
+.file-name { font-family: var(--ff-display); font-weight: 700; font-size: 16px; color: var(--white); }
+.file-desc { font-size: 13px; color: var(--white3); line-height: 1.6; flex-grow: 1; }
+.file-size { font-size: 12px; color: var(--white3); }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0,0,0,.35);
+  color: #e0ddd6;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: var(--r);
+  border: 1px solid rgba(245,243,238,.25);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-secondary:hover { border-color: rgba(245,243,238,.5); color: var(--white); transform: translateY(-2px); }
+.meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 28px; }
+.chip {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white2);
+  background: var(--ink3);
+}
+.session-block + .session-block { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.session-time {
+  font-family: var(--ff-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.session-name { font-family: var(--ff-display); font-weight: 700; font-size: 18px; color: var(--white); margin-bottom: 6px; }
+.session-by { font-size: 13px; color: var(--white2); margin-bottom: 10px; }
+.session-text { font-size: 14px; color: var(--white2); line-height: 1.7; }
+.steps-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+.step-item { display: flex; gap: 16px; align-items: flex-start; }
+.step-num {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(193,41,46,.2);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-text { font-size: 14px; color: var(--white2); line-height: 1.65; padding-top: 3px; }
+.step-text strong { color: var(--white); font-weight: 600; }
+.email-callout {
+  margin-top: 24px;
+  background: rgba(193,41,46,.06);
+  border: 1px solid rgba(193,41,46,.2);
+  border-radius: var(--r);
+  padding: 22px 24px;
+}
+.email-callout-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.email-callout a { color: var(--white); font-weight: 600; text-decoration: none; border-bottom: 1px dashed var(--gold); }
+.email-callout p { font-size: 14px; color: var(--white2); line-height: 1.65; }
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy { font-size: 12px; color: var(--white3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: var(--white3); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--white); }
+@media (max-width: 700px) {
+  nav { padding: 12px 20px; }
+  section { padding: 56px 20px; }
+  .page-hero { padding: 110px 20px 48px; }
+  .files-grid { grid-template-columns: 1fr; }
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/festival-logo.png" alt="BostonSWUG Festival" class="nav-logo-img"></a>
+  <a href="index.html#session-fablab-r1" class="nav-back">&larr; Back to Festival Agenda</a>
+</nav>
+
+<section class="page-hero">
+  <div class="max" style="width:100%;">
+    <div class="section-eyebrow">Hands-On · FAB Lab</div>
+    <h1 class="page-title">Build Your Own Pickleball Paddle — Design Files</h1>
+    <p class="page-sub">Get a jump on the fun and start modeling a decoration for the face of your very own paddle. Download the files below, start designing, and bring (or send) your file to the festival so it's ready to laser etch or vinyl cut onto your paddle.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="max">
+    <div class="section-label">Download the Paddle Files</div>
+    <div class="files-grid">
+      <div class="file-card">
+        <span class="file-ext">.STEP</span>
+        <div class="file-name">TaperedPickleballPaddle.step</div>
+        <div class="file-desc">The full paddle model — handle, neck, and face. Use this if you want to see or modify the whole paddle in your CAD tool of choice.</div>
+        <div class="file-size">355 KB</div>
+        <a href="files/TaperedPickleballPaddle.step" download class="btn-primary">Download STEP &darr;</a>
+      </div>
+      <div class="file-card">
+        <span class="file-ext">.DXF</span>
+        <div class="file-name">TaperedPickleballPaddle.dxf</div>
+        <div class="file-desc">Just the paddle's face outline — the boundary to design your decoration within. This is the easiest starting point for a laser-etched or vinyl-cut design.</div>
+        <div class="file-size">176 KB</div>
+        <a href="files/TaperedPickleballPaddle.dxf" download class="btn-primary">Download DXF &darr;</a>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--white3);margin-top:4px;">Modeled by Sal Lama in his Maker's license. Also shared on <a href="https://www.linkedin.com" target="_blank" rel="noopener" style="color:var(--white2);border-bottom:1px dashed var(--line);text-decoration:none;">LinkedIn</a> and the Made in 3D community.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="max">
+    <div class="card">
+      <div class="section-label" style="margin-bottom:6px;">Make Your Own Pickleball Paddle — Workshop</div>
+      <div class="meta-row">
+        <span class="chip">Hands-On</span>
+        <span class="chip">FAB Lab</span>
+        <span class="chip">All Levels</span>
+        <span class="chip">Runs twice — pick either round</span>
+      </div>
+      <p class="session-text">Design and build a custom pickleball paddle in the Dassault Systèmes FAB Lab — create your own laser-engraved or vinyl-cut decoration, assemble it handle-to-head, then head outside to play. Pre-made paddles are also available on the pickleball court throughout the festival if you'd rather try the game before (or instead of) the workshop.</p>
+
+      <div class="session-block">
+        <div class="session-time">Breakout Round 1 · 2:00 – 2:50 PM</div>
+        <div class="session-name">Build Your Own Pickleball Paddle</div>
+        <div class="session-by">Chinloo Lama + Sal Lama — Dassault Systèmes</div>
+      </div>
+      <div class="session-block">
+        <div class="session-time">Breakout Round 2 · 3:00 – 3:50 PM</div>
+        <div class="session-name">Build Your Own Pickleball Paddle</div>
+        <div class="session-by">Chinloo Lama + Sal Lama — Dassault Systèmes</div>
+      </div>
+
+      <p class="session-text" style="margin-top:18px;">Each session starts with a demo and design overview of the paddle in SOLIDWORKS, then you get creative — sketch or model your own custom decoration to be laser engraved or vinyl cut onto your paddle. You'll assemble all the parts (grip tape included) and finish by heading outside for a game with your new paddle in hand.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="max">
+    <div class="card">
+      <div class="section-label" style="margin-bottom:18px;">Designing &amp; Submitting Your Decoration</div>
+      <ul class="steps-list">
+        <li class="step-item">
+          <span class="step-num">1</span>
+          <span class="step-text">Download the <strong>DXF</strong> above and open it in your sketching or CAD tool of choice. It shows the boundary of the paddle's face — keep your design inside this outline.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-num">2</span>
+          <span class="step-text">Sketch or model whatever decoration you'd like — a name, a logo, a pattern, anything you want laser etched or cut as a vinyl sticker.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-num">3</span>
+          <span class="step-text">Save your finished design as a <strong>DXF</strong> (or another vector/CAD format compatible with the original outline) using a clear file name, e.g. <code>YourName_PaddleDesign.dxf</code>.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-num">4</span>
+          <span class="step-text">Email your saved file to <strong><a href="mailto:BostonSWUG@gmail.com" style="color:var(--white);border-bottom:1px dashed var(--gold);text-decoration:none;">BostonSWUG@gmail.com</a></strong> — be sure to include <strong>your name</strong> (the creator) in the email so we can match designs to attendees at the event.</span>
+        </li>
+        <li class="step-item">
+          <span class="step-num">5</span>
+          <span class="step-text">Submitting in advance means your design can be cut or etched before you even arrive — just come to the FAB Lab session ready to assemble and play. You're also welcome to design on the spot during the workshop instead.</span>
+        </li>
+      </ul>
+      <div class="email-callout">
+        <div class="email-callout-label">Send Designs To</div>
+        <p>Email your saved design file to <a href="mailto:BostonSWUG@gmail.com">BostonSWUG@gmail.com</a>, with your name as the creator included in the message. Submitting ahead of time is encouraged, but not required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">BostonSWUG Summer Festival 2026 · 4th Annual · June 26 · Waltham, MA</div>
+  <div class="footer-links">
+    <a href="index.html">Back to Agenda</a>
+    <a href="mailto:BostonSWUG@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
