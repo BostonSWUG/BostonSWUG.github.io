@@ -1030,8 +1030,29 @@ footer {
 }
 .session-round-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
+}
+.session-round-container {
+  background: var(--ink3);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px;
+  position: relative;
+}
+.session-round-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent 80%);
+  border-radius: var(--r) var(--r) 0 0;
+}
+.session-round-container .session-round-hdr { margin-bottom: 24px; }
+.session-round-container .session-round-grid { gap: 12px; }
+.session-round-container .session-card {
+  background: var(--ink2);
+  border-color: rgba(245,243,238,.06);
 }
 .session-card {
   cursor: default;
@@ -1221,10 +1242,16 @@ footer {
   .agenda-title { font-size: 15px; }
   .agenda-rooms { display: none; }
 
-  .session-round-grid { grid-template-columns: 1fr; }
-  .breakout-cols { grid-template-columns: 1fr; }
-  .breakout-col { border-right: none; border-bottom: 1px solid var(--line); }
+  .session-round-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .session-round-container { padding: 20px 16px; }
+  .breakout-cols { grid-template-columns: 1fr 1fr; gap: 0; }
+  .breakout-col { border-right: none; border-bottom: 1px solid var(--line); padding: 16px 18px; }
+  .breakout-col:nth-child(odd) { border-right: 1px solid var(--line); }
+  .breakout-col:nth-last-child(-n+2) { border-bottom: none; }
   .breakout-col:last-child { border-bottom: none; }
+  .bc-title { font-size: 12px; }
+  .bc-org { font-size: 9px; }
+  .bc-by { font-size: 10px; }
   .speakers-grid { grid-template-columns: 1fr 1fr; }
   .speaker-more { min-height: 120px; }
 
@@ -1252,7 +1279,12 @@ footer {
   .agenda-item { grid-template-columns: 60px 1fr; }
   .agenda-time { font-size: 11px; padding: 14px 8px; }
   .session-card { padding: 24px 20px; }
+  .session-round-grid { grid-template-columns: 1fr; }
+  .session-round-container { padding: 16px 12px; }
   .speaker-card { padding: 20px 18px; }
+  .breakout-cols { grid-template-columns: 1fr; }
+  .breakout-col { border-right: none !important; border-bottom: 1px solid var(--line); padding: 14px 16px; }
+  .breakout-col:last-child { border-bottom: none; }
 }
 .ad-unit {
   text-align: center;
@@ -1601,12 +1633,12 @@ footer {
     <div class="session-rounds">
 
       <!-- ROUND 1 -->
-      <div>
+      <div class="session-round-container">
         <div class="session-round-hdr fade-in">
           <div class="session-round-label">Breakout Round 1 · 2:00 PM — 2:50 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
-        <div class="session-round-grid fade-in" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="session-round-grid fade-in">
 
           <!-- Bananaz -->
           <div class="session-card" id="session-bananaz">
@@ -1642,9 +1674,10 @@ footer {
               <div class="session-type">Session · <a href="https://www.trimech.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">TriMech</a></div>
               <div class="session-title">Trust The Pretty Pictures: Simulation Tips & Troubleshooting</div>
               <div class="session-presenter"><a href="#speaker-joe-mcdonough" style="color:var(--white2);text-decoration:none;border-bottom:1px dashed var(--line);">Joe McDonough</a>, TriMech</div>
-              <div class="session-desc">Session description coming soon.</div>
+              <div class="session-desc">Core setup decisions that separate "it solved" from "I trust it" — meshing, fixturing, loading, and part interactions.</div>
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">Simulation</span>
+                <span class="expand-chip">Live Demo</span>
               </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1653,12 +1686,14 @@ footer {
             </div>
             <div class="session-expand-content">
               <div class="expand-section-label">About the Session</div>
-              <p>[Session description placeholder — tips and troubleshooting techniques for getting reliable, trustworthy results from SOLIDWORKS Simulation.]</p>
+              <p>A lot of users know how to set up a study and hit run. The harder part is knowing if the results actually make sense. This session focuses on the core setup decisions that separate "it solved" from "I trust it."</p>
+              <p style="margin-top:10px">We'll walk through the areas that have the biggest impact on accuracy — meshing, fixturing, loading, and part interactions. Along the way, we'll look at how small setup choices can dramatically change results. You'll leave with practical checks and quick workflows you can use right away to clean up your models, avoid common pitfalls, and feel more confident in what your simulation is telling you.</p>
+              <p style="margin-top:10px"><strong style="color:var(--white)">Key topics:</strong> Mesh refinement &amp; troubleshooting · Avoiding over-fixturing &amp; defining part interactions · Simplifying analysis based on the design decision</p>
               <div class="expand-meta">
                 <span class="expand-chip">EBC 130F · 24 cap</span>
               </div>
               <div class="expand-section-label">About Joe McDonough</div>
-              <p>[Bio placeholder — Joe McDonough is a simulation specialist at TriMech.]</p>
+              <p>Joe is a Lead Simulation Solutions Consultant at <a href="https://www.trimech.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--line);">TriMech</a>. He works with engineering teams to choose the right tools for the job and get up to speed using them in a practical way. He spends a lot of time running workshops and seminars around best practices, along with tips and tricks that make simulation results more reliable.</p>
             </div>
           </div>
 
@@ -1672,6 +1707,7 @@ footer {
               <div class="expand-meta" style="margin-top:14px">
                 <span class="expand-chip">All Levels</span>
                 <span class="expand-chip">Sketching</span>
+                <span class="expand-chip">Live Demo</span>
                 <span class="expand-chip">Best Practices</span>
               </div>
               <button class="session-expand-btn" onclick="toggleCard(this)">
@@ -1722,12 +1758,12 @@ footer {
       </div>
 
       <!-- ROUND 2 -->
-      <div>
+      <div class="session-round-container">
         <div class="session-round-hdr fade-in">
           <div class="session-round-label">Breakout Round 2 · 3:10 PM — 4:00 PM</div>
           <div class="session-round-name">Choose Your Track</div>
         </div>
-        <div class="session-round-grid fade-in" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="session-round-grid fade-in">
 
           <!-- TriMech -->
           <div class="session-card" id="session-trimech">
