@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BostonSWUG Summer Festival 2026 — Agenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0b0f;
+  --ink2: #13151c;
+  --ink3: #1c1f2a;
+  --gold: #c1292e;
+  --gold2: #d9403a;
+  --gold-dim: rgba(193,41,46,.12);
+  --white: #f5f3ee;
+  --white2: #ccc9c0;
+  --white3: #a8a49e;
+  --line: rgba(245,243,238,.08);
+  --r: 6px;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'Instrument Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--ff-body);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Force 16:9 aspect ratio viewport */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 48px 56px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Noise overlay */
+.slide::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .4;
+}
+
+/* Background glow */
+.slide::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(ellipse, rgba(193,41,46,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-logo {
+  height: 44px;
+  width: auto;
+}
+.header-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: -.01em;
+  color: var(--white);
+}
+.header-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.header-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.header-meta-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--white3);
+}
+.header-meta-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+.header-meta-sep {
+  width: 1px;
+  height: 32px;
+  background: var(--line);
+}
+
+/* Agenda grid */
+.agenda-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.agenda-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  background: var(--ink2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  min-height: 0;
+}
+.agenda-row.featured {
+  border-color: rgba(193,41,46,.2);
+  background: rgba(193,41,46,.04);
+}
+.agenda-row.breakout {
+  grid-template-columns: 80px 1fr;
+}
+
+.time-cell {
+  padding: 12px 10px;
+  background: var(--ink3);
+  border-right: 1px solid var(--line);
+  font-family: var(--ff-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+}
+.featured .time-cell {
+  background: rgba(193,41,46,.1);
+}
+
+.content-cell {
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.content-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--white3);
+  margin-bottom: 3px;
+}
+.content-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--white);
+  line-height: 1.25;
+}
+.content-desc {
+  font-size: 12px;
+  color: var(--white2);
+  margin-top: 2px;
+}
+.content-venue {
+  font-size: 10px;
+  color: var(--white3);
+  margin-top: 3px;
+}
+
+/* Breakout columns */
+.breakout-cells {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+}
+.breakout-cell {
+  padding: 10px 14px;
+  border-right: 1px solid var(--line);
+}
+.breakout-cell:last-child { border-right: none; }
+.breakout-cell .bc-org {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.breakout-cell .bc-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.breakout-cell .bc-by {
+  font-size: 10px;
+  color: var(--white2);
+  margin-bottom: 4px;
+}
+.breakout-cell .bc-room {
+  display: inline-block;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white3);
+  background: rgba(0,0,0,.3);
+}
+
+.breakout-body {
+  display: flex;
+  flex-direction: column;
+}
+.breakout-header {
+  padding: 10px 20px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img src="images/festival-logo.png" alt="Festival Logo" class="header-logo">
+      <div class="header-title">Summer <em>Festival</em> 2026</div>
+    </div>
+    <div class="header-meta">
+      <div class="header-meta-item">
+        <span class="header-meta-label">Date</span>
+        <span class="header-meta-value">June 26, 2026</span>
+      </div>
+      <div class="header-meta-sep"></div>
+      <div class="header-meta-item">
+        <span class="header-meta-label">Venue</span>
+        <span class="header-meta-value">Dassault Systèmes HQ</span>
+      </div>
+      <div class="header-meta-sep"></div>
+      <div class="header-meta-item">
+        <span class="header-meta-label">Location</span>
+        <span class="header-meta-value">Waltham, MA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agenda -->
+  <div class="agenda-grid">
+
+    <!-- Lunch & Games -->
+    <div class="agenda-row featured">
+      <div class="time-cell">12:00<br>PM</div>
+      <div class="content-cell">
+        <div class="content-label">Registration + Welcome</div>
+        <div class="content-title">Lunch & Games on the Green</div>
+        <div class="content-desc">Arrive, grab food, pickleball on the green, and mingle with engineers from across the region.</div>
+      </div>
+    </div>
+
+    <!-- Welcome Remarks -->
+    <div class="agenda-row">
+      <div class="time-cell">1:45<br>PM</div>
+      <div class="content-cell">
+        <div class="content-label">Opening</div>
+        <div class="content-title">Welcome Remarks</div>
+        <div class="content-desc">Dan Herzberg — BostonSWUG</div>
+      </div>
+    </div>
+
+    <!-- Breakout Round 1 -->
+    <div class="agenda-row featured breakout">
+      <div class="time-cell">2:00<br>PM</div>
+      <div class="breakout-body">
+        <div class="breakout-header">
+          <div class="content-label">Breakout Round 1 — 50 min · Choose Your Track</div>
+        </div>
+        <div class="breakout-cells">
+          <div class="breakout-cell">
+            <div class="bc-org">Bananaz.ai</div>
+            <div class="bc-title">Practical AI for the Modern SolidWorks Designer</div>
+            <div class="bc-by">Austin Etter</div>
+            <span class="bc-room">EBC 130A</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">TriMech</div>
+            <div class="bc-title">Trust The Pretty Pictures: Simulation Tips & Troubleshooting</div>
+            <div class="bc-by">Joe McDonough</div>
+            <span class="bc-room">EBC 130F</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">GoEngineer</div>
+            <div class="bc-title">SOLIDWORKS Sketches: Techniques, Tricks & Things You Missed</div>
+            <div class="bc-by">Jay Pinheiro</div>
+            <span class="bc-room">EBC 130I</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">Dassault Systèmes</div>
+            <div class="bc-title">Build Your Own Pickleball Paddle</div>
+            <div class="bc-by">Chinloo Lama + Sal Lama</div>
+            <span class="bc-room">FAB Lab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Break -->
+    <div class="agenda-row">
+      <div class="time-cell">2:50<br>PM</div>
+      <div class="content-cell">
+        <div class="content-label">Break</div>
+        <div class="content-title">Snack Break</div>
+      </div>
+    </div>
+
+    <!-- Breakout Round 2 -->
+    <div class="agenda-row featured breakout">
+      <div class="time-cell">3:10<br>PM</div>
+      <div class="breakout-body">
+        <div class="breakout-header">
+          <div class="content-label">Breakout Round 2 — 50 min · Choose Your Track</div>
+        </div>
+        <div class="breakout-cells">
+          <div class="breakout-cell">
+            <div class="bc-org">TriMech</div>
+            <div class="bc-title">From Tool to Teammate: Meet the AI Inside SOLIDWORKS</div>
+            <div class="bc-by">Joe Perera</div>
+            <span class="bc-room">EBC 130A</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">ICU Medical | SWUG NYC</div>
+            <div class="bc-title">Consistency by Design: Best Practices for Regulated Environments</div>
+            <div class="bc-by">Stephanie Hayna</div>
+            <span class="bc-room">EBC 130I</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">Visiativ</div>
+            <div class="bc-title">Managing SOLIDWORKS Data in the Cloud</div>
+            <div class="bc-by">Earl Hasz</div>
+            <span class="bc-room">EBC 130F</span>
+          </div>
+          <div class="breakout-cell">
+            <div class="bc-org">Dassault Systèmes</div>
+            <div class="bc-title">Build Your Own Pickleball Paddle</div>
+            <div class="bc-by">Chinloo Lama + Sal Lama</div>
+            <span class="bc-room">FAB Lab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel -->
+    <div class="agenda-row featured">
+      <div class="time-cell">4:00<br>PM</div>
+      <div class="content-cell">
+        <div class="content-label">Panel</div>
+        <div class="content-title">AI in Engineering Panel Discussion</div>
+        <div class="content-desc">Industry leaders discuss how AI is transforming design workflows.</div>
+        <div class="content-venue">EBC Central</div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="agenda-row">
+      <div class="time-cell">5:00<br>PM</div>
+      <div class="content-cell">
+        <div class="content-label">Social & Closing</div>
+        <div class="content-title">Cocktail Hour, Raffle Prizes & Closing Remarks</div>
+        <div class="content-desc">Drinks and networking hosted by Dassault Systèmes, raffle prizes, and announcements.</div>
+        <div class="content-venue">EBC Central</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
