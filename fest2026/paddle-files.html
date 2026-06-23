@@ -49,25 +49,89 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 40px;
+  padding: 18px 56px;
   background: rgba(10,11,15,.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo-img { height: 40px; width: auto; display: block; }
-.nav-back {
+.nav-logo-img { height: 44px; width: auto; display: block; }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
   font-size: 13px;
   font-weight: 500;
   color: var(--white2);
   text-decoration: none;
   letter-spacing: .03em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   transition: color .2s;
 }
-.nav-back:hover { color: var(--white); }
+.nav-links a:hover { color: var(--white); }
+.nav-rsvp {
+  background: var(--gold);
+  color: var(--ink) !important;
+  padding: 8px 20px;
+  border-radius: var(--r);
+  font-weight: 600 !important;
+  transition: background .2s, transform .15s !important;
+}
+.nav-rsvp:hover { background: var(--gold2) !important; transform: translateY(-1px); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 57px; left: 0; right: 0;
+  background: rgba(10,11,15,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  z-index: 99;
+  padding: 20px 20px 28px;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 13px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white2);
+  text-decoration: none;
+  border-radius: var(--r);
+  transition: background .15s, color .15s;
+}
+.mobile-menu a:hover { background: var(--ink3); color: var(--white); }
+.mobile-menu .mobile-rsvp {
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 8px;
+  padding: 14px 16px;
+}
+.mobile-menu .mobile-rsvp:hover { background: var(--gold2); color: #fff; }
 section { padding: 100px 40px; }
 .max { max-width: 880px; margin: 0 auto; }
 .page-hero { min-height: 38vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 40px 60px; position: relative; }
@@ -242,6 +306,8 @@ footer {
 .footer-links a:hover { color: var(--white); }
 @media (max-width: 700px) {
   nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
   section { padding: 56px 20px; }
   .page-hero { padding: 110px 20px 48px; }
   .files-grid { grid-template-columns: 1fr; }
@@ -253,8 +319,30 @@ footer {
 
 <nav>
   <a href="index.html" class="nav-logo"><img src="images/festival-logo.png" alt="BostonSWUG Festival" class="nav-logo-img"></a>
-  <a href="index.html#session-fablab-r1" class="nav-back">&larr; Back to Festival Agenda</a>
+  <ul class="nav-links">
+    <li><a href="index.html#agenda">Schedule</a></li>
+    <li><a href="index.html#sessions">Sessions</a></li>
+    <li><a href="index.html#speakers">Speakers</a></li>
+    <li><a href="index.html#venue">Venue</a></li>
+    <li><a href="agenda.html">My Agenda</a></li>
+    <li><a href="paddle-files.html">Your Custom Pickleball Paddle</a></li>
+    <li><a id="nav-weather" style="cursor:default;"></a></li>
+    <li><a href="index.html#rsvp" class="nav-rsvp">RSVP — Free</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#agenda" onclick="closeMenu()">Schedule</a>
+  <a href="index.html#sessions" onclick="closeMenu()">Sessions</a>
+  <a href="index.html#speakers" onclick="closeMenu()">Speakers</a>
+  <a href="index.html#venue" onclick="closeMenu()">Venue</a>
+  <a href="agenda.html" onclick="closeMenu()">My Agenda</a>
+  <a href="paddle-files.html" onclick="closeMenu()">Your Custom Pickleball Paddle</a>
+  <a id="mobile-weather" style="pointer-events:none;"></a>
+  <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="mobile-rsvp">RSVP — It's Free →</a>
+</div>
 
 <section class="page-hero">
   <div class="max" style="width:100%;">
@@ -283,7 +371,7 @@ footer {
         <a href="files/TaperedPickleballPaddle.dxf" download class="btn-primary">Download DXF &darr;</a>
       </div>
     </div>
-    <p style="font-size:13px;color:var(--white3);margin-top:4px;">Modeled by Sal Lama in his Maker's license. Also shared on <a href="https://www.linkedin.com" target="_blank" rel="noopener" style="color:var(--white2);border-bottom:1px dashed var(--line);text-decoration:none;">LinkedIn</a> and the Made in 3D community.</p>
+    <p style="font-size:13px;color:var(--white3);margin-top:4px;">Modeled by Sal Lama using <a href="https://www.solidworks.com/solution/solidworks-makers" target="_blank" rel="noopener" style="color:var(--white2);border-bottom:1px dashed var(--line);text-decoration:none;">SOLIDWORKS for Makers</a>.</p>
   </div>
 </section>
 
@@ -357,5 +445,46 @@ footer {
   </div>
 </footer>
 
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+// Weather forecast for June 26, 2026 in Waltham, MA
+(function() {
+  const WMO_ICONS = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',56:'🌨️',57:'🌨️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌨️',67:'🌨️',71:'🌨️',73:'🌨️',75:'❄️',77:'❄️',80:'🌦️',81:'🌧️',82:'🌧️',85:'🌨️',86:'🌨️',95:'⛈️',96:'⛈️',99:'⛈️'};
+  const WMO_LABELS = {0:'Clear',1:'Mostly Clear',2:'Partly Cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',80:'Light Showers',81:'Showers',82:'Heavy Showers',95:'Thunderstorm',96:'Thunderstorm + Hail',99:'Thunderstorm + Hail'};
+  async function fetchWeather() {
+    try {
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.3765&longitude=-71.2356&daily=weathercode,temperature_2m_max&start_date=2026-06-26&end_date=2026-06-26&temperature_unit=fahrenheit&timezone=America/New_York');
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      const code = data.daily.weathercode[0];
+      const high = Math.round(data.daily.temperature_2m_max[0]);
+      const icon = WMO_ICONS[code] || '🌡️';
+      const label = WMO_LABELS[code] || '';
+      const text = icon + ' ' + high + '°F';
+      const title = label + ' — High of ' + high + '°F on June 26';
+      const navEl = document.getElementById('nav-weather');
+      const mobEl = document.getElementById('mobile-weather');
+      if (navEl) { navEl.textContent = text; navEl.title = title; }
+      if (mobEl) { mobEl.textContent = text; mobEl.title = title; }
+    } catch(e) {
+      const navEl = document.getElementById('nav-weather');
+      const mobEl = document.getElementById('mobile-weather');
+      if (navEl) { navEl.textContent = '🌡️ TBD'; navEl.title = 'Forecast not yet available'; }
+      if (mobEl) { mobEl.textContent = '🌡️ TBD'; mobEl.title = 'Forecast not yet available'; }
+    }
+  }
+  fetchWeather();
+})();
+</script>
 </body>
 </html>
