@@ -40,7 +40,7 @@ html, body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 48px 56px 40px;
+  padding: 32px 56px 20px;
   position: relative;
   overflow: hidden;
 }
@@ -89,7 +89,7 @@ html, body {
 .header-title {
   font-family: var(--ff-display);
   font-weight: 800;
-  font-size: 28px;
+  font-size: 30px;
   letter-spacing: -.01em;
   color: var(--white);
 }
@@ -133,6 +133,7 @@ html, body {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  flex: 1;
 }
 
 .agenda-row {
@@ -143,6 +144,7 @@ html, body {
   border-radius: var(--r);
   overflow: hidden;
   min-height: 0;
+  flex: 1;
 }
 .agenda-row.featured {
   border-color: rgba(193,41,46,.2);
@@ -153,11 +155,11 @@ html, body {
 }
 
 .time-cell {
-  padding: 12px 10px;
+  padding: 8px 10px;
   background: var(--ink3);
   border-right: 1px solid var(--line);
   font-family: var(--ff-display);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--gold);
   display: flex;
@@ -171,13 +173,13 @@ html, body {
 }
 
 .content-cell {
-  padding: 12px 20px;
+  padding: 8px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .content-label {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: .15em;
   text-transform: uppercase;
@@ -187,19 +189,28 @@ html, body {
 .content-title {
   font-family: var(--ff-display);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--white);
   line-height: 1.25;
 }
 .content-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--white2);
   margin-top: 2px;
 }
 .content-venue {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--white3);
-  margin-top: 3px;
+  margin-top: 4px;
+}
+.venue-pill {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--white3);
+  background: rgba(0,0,0,.3);
 }
 
 /* Breakout columns */
@@ -209,35 +220,45 @@ html, body {
   border-top: 1px solid var(--line);
 }
 .breakout-cell {
-  padding: 10px 14px;
+  padding: 10px 10px;
   border-right: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+  padding-right: 36px;
 }
 .breakout-cell:last-child { border-right: none; }
 .breakout-cell .bc-org {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .breakout-cell .bc-title {
   font-family: var(--ff-display);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--white);
-  line-height: 1.3;
-  margin-bottom: 3px;
+  line-height: 1.25;
+  margin-bottom: 2px;
 }
 .breakout-cell .bc-by {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--white2);
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 .breakout-cell .bc-room {
-  display: inline-block;
-  font-size: 9px;
-  padding: 2px 7px;
+  position: absolute;
+  right: 2px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: fit-content;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-size: 10px;
+  padding: 2px 6px;
   border-radius: 999px;
   border: 1px solid var(--line);
   color: var(--white3);
@@ -251,6 +272,132 @@ html, body {
 .breakout-header {
   padding: 10px 20px;
 }
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 900px) {
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+  .slide {
+    height: auto;
+    min-height: 100vh;
+    padding: 24px 20px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  .header-meta {
+    gap: 16px;
+  }
+  .agenda-grid {
+    flex: none;
+    overflow: visible;
+  }
+  .agenda-row {
+    flex: none;
+  }
+  .agenda-row.breakout {
+    grid-template-columns: 60px 1fr;
+  }
+  .breakout-cells {
+    grid-template-columns: 1fr 1fr;
+  }
+  .breakout-cell {
+    padding-right: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .breakout-cell:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+  .breakout-cell:last-child,
+  .breakout-cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .breakout-cell .bc-room {
+    position: static;
+    transform: none;
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .agenda-row {
+    grid-template-columns: 60px 1fr;
+  }
+  .time-cell {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 22px;
+  }
+  .header-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .header-meta-sep {
+    display: none;
+  }
+  .breakout-cells {
+    grid-template-columns: 1fr;
+  }
+  .breakout-cell {
+    border-right: none !important;
+    border-bottom: 1px solid var(--line);
+  }
+  .breakout-cell:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Heart favorites - mobile only */
+.fav-heart {
+  display: none;
+}
+@media (max-width: 900px) {
+  .fav-heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: rgba(0,0,0,.4);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    z-index: 3;
+    transition: transform .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fav-heart:active {
+    transform: scale(1.3);
+  }
+  .fav-heart::before {
+    content: '♡';
+    color: var(--white3);
+  }
+  .fav-heart.liked::before {
+    content: '♥';
+    color: var(--gold);
+  }
+  .breakout-cell {
+    position: relative;
+  }
+}
 </style>
 </head>
 <body>
@@ -259,8 +406,10 @@ html, body {
   <!-- Header -->
   <div class="header">
     <div class="header-left">
-      <img src="images/festival-logo.png" alt="Festival Logo" class="header-logo">
-      <div class="header-title">Summer <em>Festival</em> 2026</div>
+      <a href="https://bostonswug.com/fest2026/" style="display:flex;align-items:center;gap:20px;text-decoration:none;">
+        <img src="images/festival-logo.png" alt="Festival Logo" class="header-logo">
+        <div class="header-title"><em>BostonSWUG</em> Summer Festival 2026</div>
+      </a>
     </div>
     <div class="header-meta">
       <div class="header-meta-item">
@@ -277,6 +426,11 @@ html, body {
         <span class="header-meta-label">Location</span>
         <span class="header-meta-value">Waltham, MA</span>
       </div>
+      <div class="header-meta-sep"></div>
+      <div class="header-meta-item" id="weather-widget">
+        <span class="header-meta-label">Forecast</span>
+        <span class="header-meta-value" id="weather-display">—</span>
+      </div>
     </div>
   </div>
 
@@ -290,6 +444,7 @@ html, body {
         <div class="content-label">Registration + Welcome</div>
         <div class="content-title">Lunch & Games on the Green</div>
         <div class="content-desc">Arrive, grab food, pickleball on the green, and mingle with engineers from across the region.</div>
+        <div class="content-venue"><span class="venue-pill">DS Campus Green</span></div>
       </div>
     </div>
 
@@ -300,6 +455,7 @@ html, body {
         <div class="content-label">Opening</div>
         <div class="content-title">Welcome Remarks</div>
         <div class="content-desc">Dan Herzberg — BostonSWUG</div>
+        <div class="content-venue"><span class="venue-pill">EBC Central</span></div>
       </div>
     </div>
 
@@ -311,25 +467,29 @@ html, body {
           <div class="content-label">Breakout Round 1 — 50 min · Choose Your Track</div>
         </div>
         <div class="breakout-cells">
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r1-bananaz">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">Bananaz.ai</div>
             <div class="bc-title">Practical AI for the Modern SolidWorks Designer</div>
             <div class="bc-by">Austin Etter</div>
             <span class="bc-room">EBC 130A</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r1-trimech-sim">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">TriMech</div>
             <div class="bc-title">Trust The Pretty Pictures: Simulation Tips & Troubleshooting</div>
             <div class="bc-by">Joe McDonough</div>
             <span class="bc-room">EBC 130F</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r1-goengineer">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">GoEngineer</div>
-            <div class="bc-title">SOLIDWORKS Sketches: Techniques, Tricks & Things You Missed</div>
+            <div class="bc-title">SolidWorks Sketches: Techniques, Tricks & Things You Missed</div>
             <div class="bc-by">Jay Pinheiro</div>
             <span class="bc-room">EBC 130I</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r1-fablab">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">Dassault Systèmes</div>
             <div class="bc-title">Build Your Own Pickleball Paddle</div>
             <div class="bc-by">Chinloo Lama + Sal Lama</div>
@@ -340,11 +500,12 @@ html, body {
     </div>
 
     <!-- Break -->
-    <div class="agenda-row">
-      <div class="time-cell">2:50<br>PM</div>
-      <div class="content-cell">
+    <div class="agenda-row" style="flex:0 0 auto;">
+      <div class="time-cell" style="padding:4px 10px;">2:50<br>PM</div>
+      <div class="content-cell" style="padding:4px 20px;">
         <div class="content-label">Break</div>
         <div class="content-title">Snack Break</div>
+        <div class="content-venue"><span class="venue-pill">EBC Central</span></div>
       </div>
     </div>
 
@@ -356,25 +517,29 @@ html, body {
           <div class="content-label">Breakout Round 2 — 50 min · Choose Your Track</div>
         </div>
         <div class="breakout-cells">
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r2-trimech-ai">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">TriMech</div>
-            <div class="bc-title">From Tool to Teammate: Meet the AI Inside SOLIDWORKS</div>
+            <div class="bc-title">From Tool to Teammate: Meet the AI Inside SolidWorks</div>
             <div class="bc-by">Joe Perera</div>
             <span class="bc-room">EBC 130A</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r2-icumedical">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">ICU Medical | SWUG NYC</div>
             <div class="bc-title">Consistency by Design: Best Practices for Regulated Environments</div>
             <div class="bc-by">Stephanie Hayna</div>
             <span class="bc-room">EBC 130I</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r2-visiativ">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">Visiativ</div>
-            <div class="bc-title">Managing SOLIDWORKS Data in the Cloud</div>
+            <div class="bc-title">Managing SolidWorks Data in the Cloud</div>
             <div class="bc-by">Earl Hasz</div>
             <span class="bc-room">EBC 130F</span>
           </div>
-          <div class="breakout-cell">
+          <div class="breakout-cell" data-session="r2-fablab">
+            <button class="fav-heart" aria-label="Favorite"></button>
             <div class="bc-org">Dassault Systèmes</div>
             <div class="bc-title">Build Your Own Pickleball Paddle</div>
             <div class="bc-by">Chinloo Lama + Sal Lama</div>
@@ -391,7 +556,7 @@ html, body {
         <div class="content-label">Panel</div>
         <div class="content-title">AI in Engineering Panel Discussion</div>
         <div class="content-desc">Industry leaders discuss how AI is transforming design workflows.</div>
-        <div class="content-venue">EBC Central</div>
+        <div class="content-venue"><span class="venue-pill">EBC Central</span></div>
       </div>
     </div>
 
@@ -402,11 +567,104 @@ html, body {
         <div class="content-label">Social & Closing</div>
         <div class="content-title">Cocktail Hour, Raffle Prizes & Closing Remarks</div>
         <div class="content-desc">Drinks and networking hosted by Dassault Systèmes, raffle prizes, and announcements.</div>
-        <div class="content-venue">EBC Central</div>
+        <div class="content-venue"><span class="venue-pill">EBC Central</span></div>
       </div>
     </div>
 
   </div>
 </div>
+<script>
+(function() {
+  const STORAGE_KEY = 'bswug-agenda-favs';
+
+  function getFavs() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch(e) { return {}; }
+  }
+
+  function saveFavs(favs) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+  }
+
+  // Restore state on load
+  const favs = getFavs();
+  document.querySelectorAll('.fav-heart').forEach(btn => {
+    const cell = btn.closest('[data-session]');
+    if (!cell) return;
+    const id = cell.dataset.session;
+    if (favs[id]) btn.classList.add('liked');
+  });
+
+  // Toggle on click
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.fav-heart');
+    if (!btn) return;
+    const cell = btn.closest('[data-session]');
+    if (!cell) return;
+    const id = cell.dataset.session;
+    const favs = getFavs();
+    if (favs[id]) {
+      delete favs[id];
+      btn.classList.remove('liked');
+    } else {
+      favs[id] = true;
+      btn.classList.add('liked');
+    }
+    saveFavs(favs);
+  });
+
+  // Weather forecast for June 26, 2026 in Waltham, MA
+  // Uses Open-Meteo free API (no key needed)
+  const WMO_ICONS = {
+    0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+    45: '🌫️', 48: '🌫️',
+    51: '🌦️', 53: '🌦️', 55: '🌧️',
+    56: '🌨️', 57: '🌨️',
+    61: '🌧️', 63: '🌧️', 65: '🌧️',
+    66: '🌨️', 67: '🌨️',
+    71: '🌨️', 73: '🌨️', 75: '❄️',
+    77: '❄️',
+    80: '🌦️', 81: '🌧️', 82: '🌧️',
+    85: '🌨️', 86: '🌨️',
+    95: '⛈️', 96: '⛈️', 99: '⛈️'
+  };
+  const WMO_LABELS = {
+    0: 'Clear', 1: 'Mostly Clear', 2: 'Partly Cloudy', 3: 'Overcast',
+    45: 'Fog', 48: 'Fog',
+    51: 'Light Drizzle', 53: 'Drizzle', 55: 'Heavy Drizzle',
+    56: 'Freezing Drizzle', 57: 'Freezing Drizzle',
+    61: 'Light Rain', 63: 'Rain', 65: 'Heavy Rain',
+    66: 'Freezing Rain', 67: 'Freezing Rain',
+    71: 'Light Snow', 73: 'Snow', 75: 'Heavy Snow',
+    77: 'Snow Grains',
+    80: 'Light Showers', 81: 'Showers', 82: 'Heavy Showers',
+    85: 'Snow Showers', 86: 'Heavy Snow Showers',
+    95: 'Thunderstorm', 96: 'Thunderstorm + Hail', 99: 'Thunderstorm + Hail'
+  };
+
+  async function fetchWeather() {
+    const el = document.getElementById('weather-display');
+    try {
+      // Waltham, MA coords: 42.3765, -71.2356
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=42.3765&longitude=-71.2356&daily=weathercode,temperature_2m_max&start_date=2026-06-26&end_date=2026-06-26&temperature_unit=fahrenheit&timezone=America/New_York';
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      const code = data.daily.weathercode[0];
+      const high = Math.round(data.daily.temperature_2m_max[0]);
+      const icon = WMO_ICONS[code] || '🌡️';
+      const label = WMO_LABELS[code] || '';
+      el.textContent = icon + ' ' + high + '°F';
+      el.title = label + ' — High of ' + high + '°F';
+    } catch(e) {
+      // If forecast isn't available yet (too far out), show placeholder
+      el.textContent = '🌡️ TBD';
+      el.title = 'Forecast not yet available for June 26, 2026';
+    }
+  }
+  fetchWeather();
+})();
+</script>
 </body>
 </html>
