@@ -1315,7 +1315,6 @@ footer {
     <li><a href="agenda.html">My Agenda</a></li>
     <li><a href="paddle-files.html">Your Custom Pickleball Paddle</a></li>
     <li><a href="photos.html">Photos</a></li>
-    <li><a id="nav-weather" style="cursor:default;"></a></li>
     <li><a href="#rsvp" class="nav-rsvp">RSVP — Free</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -1331,7 +1330,6 @@ footer {
   <a href="agenda.html" onclick="closeMenu()">My Agenda</a>
   <a href="paddle-files.html" onclick="closeMenu()">Your Custom Pickleball Paddle</a>
   <a href="photos.html" onclick="closeMenu()">Photos</a>
-  <a id="mobile-weather" style="pointer-events:none;"></a>
   <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="mobile-rsvp">RSVP — It's Free →</a>
 </div>
 
@@ -2345,37 +2343,6 @@ document.querySelectorAll('.session-filter-btn').forEach(btn => {
   dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
 
   startAuto();
-})();
-</script>
-
-<script>
-// Weather forecast for June 26, 2026 in Waltham, MA
-(function() {
-  const WMO_ICONS = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',56:'🌨️',57:'🌨️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌨️',67:'🌨️',71:'🌨️',73:'🌨️',75:'❄️',77:'❄️',80:'🌦️',81:'🌧️',82:'🌧️',85:'🌨️',86:'🌨️',95:'⛈️',96:'⛈️',99:'⛈️'};
-  const WMO_LABELS = {0:'Clear',1:'Mostly Clear',2:'Partly Cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',80:'Light Showers',81:'Showers',82:'Heavy Showers',95:'Thunderstorm',96:'Thunderstorm + Hail',99:'Thunderstorm + Hail'};
-  async function fetchWeather() {
-    try {
-      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.3765&longitude=-71.2356&daily=weathercode,temperature_2m_max&start_date=2026-06-26&end_date=2026-06-26&temperature_unit=fahrenheit&timezone=America/New_York');
-      if (!res.ok) throw new Error('API error');
-      const data = await res.json();
-      const code = data.daily.weathercode[0];
-      const high = Math.round(data.daily.temperature_2m_max[0]);
-      const icon = WMO_ICONS[code] || '🌡️';
-      const label = WMO_LABELS[code] || '';
-      const text = icon + ' ' + high + '°F';
-      const title = label + ' — High of ' + high + '°F on June 26';
-      const navEl = document.getElementById('nav-weather');
-      const mobEl = document.getElementById('mobile-weather');
-      if (navEl) { navEl.textContent = text; navEl.title = title; }
-      if (mobEl) { mobEl.textContent = text; mobEl.title = title; }
-    } catch(e) {
-      const navEl = document.getElementById('nav-weather');
-      const mobEl = document.getElementById('mobile-weather');
-      if (navEl) { navEl.textContent = '🌡️ TBD'; navEl.title = 'Forecast not yet available'; }
-      if (mobEl) { mobEl.textContent = '🌡️ TBD'; mobEl.title = 'Forecast not yet available'; }
-    }
-  }
-  fetchWeather();
 })();
 </script>
 
