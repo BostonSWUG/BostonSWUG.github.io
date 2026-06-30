@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festival Photos — BostonSWUG Summer Festival 2026</title>
+<meta name="description" content="Photos from the 4th Annual BostonSWUG Summer Festival, June 26, 2026 at Dassault Systèmes HQ, Waltham, MA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0b0f;
+  --ink2: #13151c;
+  --ink3: #1c1f2a;
+  --gold: #c1292e;
+  --gold2: #d9403a;
+  --gold-dim: rgba(193,41,46,.12);
+  --white: #f5f3ee;
+  --white2: #ccc9c0;
+  --white3: #a8a49e;
+  --line: rgba(245,243,238,.08);
+  --r: 6px;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'Instrument Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .5;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 56px;
+  background: rgba(10,11,15,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo-img { height: 44px; width: auto; display: block; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white2);
+  text-decoration: none;
+  letter-spacing: .03em;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--gold); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px; transition: all .25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 57px; left: 0; right: 0;
+  background: rgba(10,11,15,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  z-index: 99;
+  padding: 20px 20px 28px;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 13px 16px; font-size: 16px; font-weight: 500;
+  color: var(--white2); text-decoration: none; border-radius: var(--r);
+  transition: background .15s, color .15s;
+}
+.mobile-menu a:hover { background: var(--ink3); color: var(--white); }
+.mobile-menu a.active { color: var(--gold); }
+
+/* ── HERO ── */
+.photos-hero {
+  padding: 140px 40px 72px;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.photos-hero-glow {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(ellipse, rgba(193,41,46,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.photos-hero-glow2 {
+  position: absolute;
+  bottom: 0; left: -5%;
+  width: 35vw; height: 35vw;
+  background: radial-gradient(ellipse, rgba(193,41,46,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.photos-hero-grid {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.photos-hero-grid svg {
+  position: absolute; inset: 0; width: 100%; height: 100%; opacity: .05;
+}
+.hero-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+.hero-eyebrow {
+  font-family: var(--ff-display);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+}
+.hero-title {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.hero-title em { font-style: normal; color: var(--gold); display: block; }
+.hero-meta {
+  display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.hero-meta-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--white3);
+}
+.hero-meta-value { font-size: 15px; font-weight: 600; color: var(--white); }
+.hero-meta-sep { width: 1px; height: 40px; background: var(--line); flex-shrink: 0; }
+
+/* ── GALLERY ── */
+.gallery-section {
+  padding: 64px 40px 100px;
+  background: var(--ink);
+}
+.gallery-inner { max-width: 1400px; margin: 0 auto; }
+
+.photo-columns {
+  columns: 4;
+  column-gap: 10px;
+}
+.photo-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  border-radius: var(--r);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid var(--line);
+  display: block;
+}
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .4s ease;
+}
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,11,15,.7) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity .25s;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+.photo-overlay-icon {
+  width: 36px; height: 36px;
+  background: rgba(193,41,46,.85);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-left: auto;
+}
+.photo-overlay-icon svg { width: 16px; height: 16px; fill: var(--white); }
+.photo-item:hover img { transform: scale(1.03); }
+.photo-item:hover .photo-overlay { opacity: 1; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lb-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(5,6,9,.95);
+  cursor: pointer;
+}
+.lb-img-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: min(90vw, 1200px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lb-img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--r);
+  display: block;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+}
+.lb-counter {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--white3);
+  font-family: var(--ff-display);
+}
+.lb-close {
+  position: fixed;
+  top: 24px; right: 28px;
+  z-index: 2;
+  background: rgba(28,31,42,.8);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-size: 22px;
+  line-height: 1;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lb-close:hover { background: rgba(193,41,46,.4); }
+.lb-prev, .lb-next {
+  position: fixed;
+  top: 50%; transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(28,31,42,.8);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-size: 20px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lb-prev:hover, .lb-next:hover { background: rgba(193,41,46,.3); }
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand { font-family: var(--ff-display); font-size: 14px; font-weight: 700; color: var(--white2); }
+.footer-brand span { color: var(--gold); }
+.footer-copy { font-size: 12px; color: var(--white3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: var(--white3); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .photo-columns { columns: 3; }
+}
+@media (max-width: 900px) {
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .photos-hero { padding: 100px 20px 56px; }
+  .hero-meta { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .hero-meta-sep { display: none; }
+  .gallery-section { padding: 48px 16px 72px; }
+  .photo-columns { columns: 2; column-gap: 8px; }
+  .photo-item { margin-bottom: 8px; }
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+  .lb-prev { left: 10px; }
+  .lb-next { right: 10px; }
+}
+@media (max-width: 480px) {
+  .photo-columns { columns: 1; }
+}
+</style>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9758094754530463" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/festival-logo.png" alt="BostonSWUG Festival" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#agenda">Schedule</a></li>
+    <li><a href="index.html#sessions">Sessions</a></li>
+    <li><a href="index.html#speakers">Speakers</a></li>
+    <li><a href="index.html#venue">Venue</a></li>
+    <li><a href="agenda.html">My Agenda</a></li>
+    <li><a href="paddle-files.html">Your Custom Pickleball Paddle</a></li>
+    <li><a href="photos.html" class="active">Photos</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#agenda" onclick="closeMenu()">Schedule</a>
+  <a href="index.html#sessions" onclick="closeMenu()">Sessions</a>
+  <a href="index.html#speakers" onclick="closeMenu()">Speakers</a>
+  <a href="index.html#venue" onclick="closeMenu()">Venue</a>
+  <a href="agenda.html" onclick="closeMenu()">My Agenda</a>
+  <a href="paddle-files.html" onclick="closeMenu()">Your Custom Pickleball Paddle</a>
+  <a href="photos.html" class="active" onclick="closeMenu()">Photos</a>
+</div>
+
+<!-- HERO -->
+<section class="photos-hero">
+  <div class="photos-hero-grid">
+    <div class="photos-hero-glow"></div>
+    <div class="photos-hero-glow2"></div>
+    <svg viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#f5f3ee" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="smallgrid" width="12" height="12" patternUnits="userSpaceOnUse">
+          <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#f5f3ee" stroke-width="0.2"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#smallgrid)"/>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">4th Annual BostonSWUG Summer Festival</div>
+    <h1 class="hero-title">
+      Festival
+      <em>Photos</em>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Date</span>
+        <span class="hero-meta-value">Friday, June 26, 2026</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Location</span>
+        <span class="hero-meta-value">Dassault Systèmes HQ, Waltham, MA</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Photos</span>
+        <span class="hero-meta-value">9 images</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+    <div class="photo-columns" id="gallery">
+
+      <div class="photo-item" data-index="0">
+        <img src="eventphotos/Bryan - PXL_20260626_200809096.jpg" alt="BostonSWUG Summer Festival 2026 — photo 1" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="1">
+        <img src="eventphotos/Bryan - PXL_20260626_200816674.jpg" alt="BostonSWUG Summer Festival 2026 — photo 2" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="2">
+        <img src="eventphotos/Bryan - PXL_20260626_200837532.jpg" alt="BostonSWUG Summer Festival 2026 — photo 3" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="3">
+        <img src="eventphotos/Bryan - PXL_20260626_201052791.jpg" alt="BostonSWUG Summer Festival 2026 — photo 4" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="4">
+        <img src="eventphotos/Bryan - PXL_20260626_201211201.jpg" alt="BostonSWUG Summer Festival 2026 — photo 5" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="5">
+        <img src="eventphotos/Steph - PXL_20260626_201856125.jpg" alt="BostonSWUG Summer Festival 2026 — photo 6" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="6">
+        <img src="eventphotos/Photo Jun 26 2026, 5 02 53 PM.jpg" alt="BostonSWUG Summer Festival 2026 — photo 7" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="7">
+        <img src="eventphotos/Photo Jun 26 2026, 5 03 04 PM.jpg" alt="BostonSWUG Summer Festival 2026 — photo 8" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="photo-item" data-index="8">
+        <img src="eventphotos/Steph - PXL_20260626_222834067.MP.jpg" alt="BostonSWUG Summer Festival 2026 — photo 9" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-overlay-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6h-2V5h-4V3zm-6 0H3v6h2V5h4V3zM3 15h2v4h4v2H3v-6zm18 4h-4v2h6v-6h-2v4z"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-backdrop" id="lb-backdrop"></div>
+  <button class="lb-close" id="lb-close" aria-label="Close">&#x2715;</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Previous photo">&#10094;</button>
+  <button class="lb-next" id="lb-next" aria-label="Next photo">&#10095;</button>
+  <div class="lb-img-wrap">
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>BostonSWUG</span> Summer Festival 2026</div>
+  <div class="footer-copy">&copy; 2026 Boston SolidWorks User Group</div>
+  <nav class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="agenda.html">My Agenda</a>
+    <a href="paddle-files.html">Paddle Files</a>
+    <a href="photos.html">Photos</a>
+  </nav>
+</footer>
+
+<script>
+// ── NAV HAMBURGER ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// ── LIGHTBOX ──
+const photos = [
+  { src: 'eventphotos/Bryan - PXL_20260626_200809096.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Bryan - PXL_20260626_200816674.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Bryan - PXL_20260626_200837532.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Bryan - PXL_20260626_201052791.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Bryan - PXL_20260626_201211201.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Steph - PXL_20260626_201856125.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Photo Jun 26 2026, 5 02 53 PM.jpg',         alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Photo Jun 26 2026, 5 03 04 PM.jpg',         alt: 'BostonSWUG Summer Festival 2026' },
+  { src: 'eventphotos/Steph - PXL_20260626_222834067.MP.jpg',     alt: 'BostonSWUG Summer Festival 2026' },
+];
+
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+let current = 0;
+
+function openLightbox(index) {
+  current = index;
+  showPhoto();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showPhoto() {
+  const p = photos[current];
+  lbImg.src = p.src;
+  lbImg.alt = p.alt;
+  lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+}
+
+function prev() { current = (current - 1 + photos.length) % photos.length; showPhoto(); }
+function next() { current = (current + 1) % photos.length; showPhoto(); }
+
+document.querySelectorAll('.photo-item').forEach(el => {
+  el.addEventListener('click', () => openLightbox(parseInt(el.dataset.index)));
+});
+
+document.getElementById('lb-backdrop').addEventListener('click', closeLightbox);
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', prev);
+document.getElementById('lb-next').addEventListener('click', next);
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+});
+
+// Swipe support
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(dx) > 40) dx > 0 ? prev() : next();
+});
+</script>
+
+</body>
+</html>
