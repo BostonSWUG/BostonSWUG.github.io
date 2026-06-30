@@ -38,7 +38,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NOISE OVERLAY ── */
+/* -- NOISE OVERLAY -- */
 body::before {
   content: '';
   position: fixed;
@@ -49,7 +49,7 @@ body::before {
   opacity: .5;
 }
 
-/* ── NAV ── */
+/* -- NAV -- */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -96,7 +96,7 @@ nav {
 }
 .nav-rsvp:hover { background: var(--gold2) !important; transform: translateY(-1px); }
 
-/* ── HERO ── */
+/* -- HERO -- */
 .hero {
   background: var(--ink);
   min-height: 65vh;
@@ -288,7 +288,7 @@ nav {
   50% { opacity: 1; transform: scaleY(1.2); }
 }
 
-/* ── SHARED ── */
+/* -- SHARED -- */
 section { padding: 100px 40px; }
 .section-eyebrow {
   font-family: var(--ff-display);
@@ -328,7 +328,7 @@ section { padding: 100px 40px; }
 
 .max { max-width: 1200px; margin: 0 auto; }
 
-/* ── ABOUT STRIP ── */
+/* -- ABOUT STRIP -- */
 .about {
   background: var(--ink2);
   border-top: 1px solid var(--line);
@@ -384,7 +384,7 @@ section { padding: 100px 40px; }
   border: 1px solid var(--line);
 }
 
-/* ── CAROUSEL ── */
+/* -- CAROUSEL -- */
 .carousel {
   position: relative;
   border-radius: var(--r);
@@ -460,7 +460,7 @@ section { padding: 100px 40px; }
   color: var(--white3);
 }
 
-/* ── AGENDA ── */
+/* -- AGENDA -- */
 .agenda { background: var(--ink); }
 .agenda-track {
   display: flex;
@@ -560,7 +560,7 @@ section { padding: 100px 40px; }
   background: var(--line);
 }
 
-/* ── SESSIONS ── */
+/* -- SESSIONS -- */
 .sessions { background: var(--ink2); border-top: 1px solid var(--line); }
 .sessions-grid {
   display: grid;
@@ -617,7 +617,7 @@ section { padding: 100px 40px; }
 }
 .session-card.panel { border-left: 2px solid var(--gold); }
 
-/* ── SPEAKERS ── */
+/* -- SPEAKERS -- */
 .speakers { background: var(--ink); }
 .speakers-grid {
   display: grid;
@@ -715,7 +715,7 @@ section { padding: 100px 40px; }
   color: var(--white2);
 }
 
-/* ── SPEAKER FILTER ── */
+/* -- SPEAKER FILTER -- */
 .speaker-filter {
   display: flex;
   gap: 8px;
@@ -745,7 +745,7 @@ section { padding: 100px 40px; }
   font-weight: 600;
 }
 
-/* ── SESSION FILTER ── */
+/* -- SESSION FILTER -- */
 .session-filter {
   display: flex;
   gap: 6px;
@@ -775,7 +775,7 @@ section { padding: 100px 40px; }
   font-weight: 600;
 }
 
-/* ── VENUE ── */
+/* -- VENUE -- */
 .venue { background: var(--ink2); border-top: 1px solid var(--line); }
 .venue-inner {
   display: grid;
@@ -831,7 +831,7 @@ section { padding: 100px 40px; }
   line-height: 1.5;
 }
 
-/* ── SPONSORS ── */
+/* -- SPONSORS -- */
 .sponsors {
   background: var(--ink);
   border-top: 1px solid var(--line);
@@ -875,7 +875,7 @@ section { padding: 100px 40px; }
 }
 .sponsors-cta a:hover { text-decoration: underline; }
 
-/* ── RSVP CTA ── */
+/* -- RSVP CTA -- */
 .cta-section {
   background: linear-gradient(135deg, var(--ink2) 0%, var(--ink3) 100%);
   border-top: 1px solid var(--line);
@@ -918,7 +918,7 @@ section { padding: 100px 40px; }
   position: relative;
 }
 
-/* ── FOOTER ── */
+/* -- FOOTER -- */
 footer {
   background: var(--ink);
   border-top: 1px solid var(--line);
@@ -952,7 +952,7 @@ footer {
 }
 .footer-links a:hover { color: var(--white); }
 
-/* ── BREAKOUT COLUMNS (Agenda) ── */
+/* -- BREAKOUT COLUMNS (Agenda) -- */
 .agenda-item.breakout .agenda-body {
   padding: 0;
   display: block;
@@ -1007,7 +1007,7 @@ footer {
   background: rgba(0,0,0,.3);
 }
 
-/* ── EXPANDABLE SESSION CARDS ── */
+/* -- EXPANDABLE SESSION CARDS -- */
 .session-rounds { display: flex; flex-direction: column; gap: 52px; }
 .session-round-hdr { margin-bottom: 20px; }
 .session-round-label {
@@ -1144,7 +1144,7 @@ footer {
   background: rgba(193,41,46,.03);
 }
 
-/* ── FADE IN ANIMATION ── */
+/* -- FADE IN ANIMATION -- */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -1152,7 +1152,7 @@ footer {
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ── MOBILE NAV ── */
+/* -- MOBILE NAV -- */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -1208,7 +1208,7 @@ footer {
 }
 .mobile-menu .mobile-rsvp:hover { background: var(--gold2); color: #fff; }
 
-/* ── RESPONSIVE ── */
+/* -- RESPONSIVE -- */
 @media (max-width: 900px) {
   nav { padding: 12px 20px; }
   .nav-links { display: none; }
@@ -1313,7 +1313,7 @@ footer {
     <li><a href="#speakers">Speakers</a></li>
     <li><a href="#venue">Venue</a></li>
     <li><a href="agenda.html">My Agenda</a></li>
-    <li><a href="paddle-files.html">Your Custom Pickleball Paddle</a></li>
+    <li><a href="paddle-files.html">Pickleball Paddle Files</a></li>
     <li><a href="photos.html">Photos</a></li>
     <li><a href="#rsvp" class="nav-rsvp">RSVP — Free</a></li>
   </ul>
@@ -1328,9 +1328,9 @@ footer {
   <a href="#speakers" onclick="closeMenu()">Speakers</a>
   <a href="#venue" onclick="closeMenu()">Venue</a>
   <a href="agenda.html" onclick="closeMenu()">My Agenda</a>
-  <a href="paddle-files.html" onclick="closeMenu()">Your Custom Pickleball Paddle</a>
+  <a href="paddle-files.html" onclick="closeMenu()">Pickleball Paddle Files</a>
   <a href="photos.html" onclick="closeMenu()">Photos</a>
-  <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="mobile-rsvp">RSVP — It's Free →</a>
+  <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="mobile-rsvp">RSVP — It's Free ?</a>
 </div>
 
 <!-- HERO -->
@@ -1385,7 +1385,7 @@ footer {
   </div>
 
   <div class="hero-actions">
-    <a href="#rsvp" class="btn-primary">RSVP — It's Free →</a>
+    <a href="#rsvp" class="btn-primary">RSVP — It's Free ?</a>
     <a href="#sessions" class="btn-secondary">View Sessions</a>
   </div>
 
@@ -2125,7 +2125,7 @@ footer {
       </div>
       <div class="venue-details">
         <div class="venue-detail-item">
-          <div class="venue-icon">📍</div>
+          <div class="venue-icon">??</div>
           <div>
             <div class="venue-detail-label">Address</div>
             <div class="venue-detail-value">185 Wyman St<br>Waltham, MA 02451</div>
@@ -2133,7 +2133,7 @@ footer {
           </div>
         </div>
         <div class="venue-detail-item">
-          <div class="venue-icon">🕛</div>
+          <div class="venue-icon">??</div>
           <div>
             <div class="venue-detail-label">Date & Time</div>
             <div class="venue-detail-value">Friday, June 26, 2026</div>
@@ -2141,7 +2141,7 @@ footer {
           </div>
         </div>
         <div class="venue-detail-item">
-          <div class="venue-icon">🏛</div>
+          <div class="venue-icon">??</div>
           <div>
             <div class="venue-detail-label">Spaces</div>
             <div class="venue-detail-value">EBC + 3 Breakout Rooms + FAB Lab</div>
@@ -2149,7 +2149,7 @@ footer {
           </div>
         </div>
         <div class="venue-detail-item">
-          <div class="venue-icon">🚗</div>
+          <div class="venue-icon">??</div>
           <div>
             <div class="venue-detail-label">Parking</div>
             <div class="venue-detail-value">Free on-site parking available</div>
@@ -2174,7 +2174,7 @@ footer {
       <div class="sponsor-badge">Dassault Systèmes</div>
     </div>
     <div class="sponsors-cta">
-      Interested in sponsoring? <a href="mailto:BostonSWUG@gmail.com">Get in touch →</a>
+      Interested in sponsoring? <a href="mailto:BostonSWUG@gmail.com">Get in touch ?</a>
     </div>
   </div>
 </section>
@@ -2185,7 +2185,7 @@ footer {
     <h2 class="cta-title fade-in">Save your seat.<br>It's free.</h2>
     <p class="cta-sub fade-in">Register on the SWUGN community portal. No cost, no catch.</p>
     <div class="cta-actions fade-in">
-      <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="btn-primary">RSVP on SWUGN →</a>
+      <a href="https://community.swugn.org/events/details/solidworks-boston-solidworks-user-group-presents-bostonswug-summer-festival-2026/cohost-boston-solidworks-user-group/" target="_blank" class="btn-primary">RSVP on SWUGN ?</a>
       <a href="mailto:BostonSWUG@gmail.com" class="btn-secondary">Contact the organizer</a>
     </div>
   </div>
