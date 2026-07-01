@@ -420,7 +420,7 @@ footer {
       <div class="hero-meta-sep"></div>
       <div class="hero-meta-item">
         <span class="hero-meta-label">Photos</span>
-        <span class="hero-meta-value">22 images</span>
+        <span class="hero-meta-value" id="photo-count">22 images</span>
       </div>
     </div>
   </div>
@@ -651,6 +651,8 @@ const photos = [
   { src: 'eventphotos/Bill Liteplo - 20260626_155850.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
   { src: 'eventphotos/Bill Liteplo - 20260626_160947.jpg',        alt: 'BostonSWUG Summer Festival 2026' },
 ];
+
+document.getElementById('photo-count').textContent = photos.length + ' images';
 
 const lightbox  = document.getElementById('lightbox');
 const lbImg     = document.getElementById('lb-img');
